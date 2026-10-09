@@ -736,3 +736,112 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 /*--- Learning Paths Section End ---*/
+
+
+//--- Courses Page Scroll Reveal Animation ---
+
+document.addEventListener("DOMContentLoaded", function () {
+    const revealSelectors = [
+        ".ec-all-hero-breadcrumb",
+        ".ec-all-hero-eyebrow",
+        ".ec-all-hero-title",
+        ".ec-all-hero-description",
+        ".ec-all-hero-meta",
+        ".ec-crs-library-header",
+        ".ec-crs-library-search",
+        ".ec-crs-library-toolbar",
+        ".ec-crs-library-status",
+        ".ec-crs-paths-header",
+        ".ec-crs-paths-footer",
+        ".ec-all-cta-content"
+    ];
+
+    const revealLeftSelectors = [
+        ".ec-all-hero-visual",
+        ".ec-crs-library-heading",
+        ".ec-crs-paths-info",
+        ".ec-all-cta-visual"
+    ];
+
+    const revealRightSelectors = [
+        ".ec-crs-library-count-box",
+        ".ec-crs-library-search-inner",
+        ".ec-crs-paths-description"
+    ];
+
+    const revealScaleSelectors = [
+        ".ec-crs-library-card",
+        ".ec-crs-paths-tab",
+        ".ec-crs-paths-stat",
+        ".ec-crs-paths-step",
+        ".ec-all-cta-eyebrow"
+    ];
+
+    // Respect the user's motion preference.
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // Reveal everything immediately when reduced motion is enabled.
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        return;
+    }
+
+    // Apply reveal classes to matching elements.
+    function prepareReveal(selectors, revealClass) {
+        selectors.forEach(function (selector) {
+            const elements = document.querySelectorAll(selector);
+
+            elements.forEach(function (element, index) {
+                element.classList.add(revealClass);
+
+                // Stagger repeated cards and items.
+                if (
+                    revealClass === "ec-crs-reveal-scale" &&
+                    element.matches(
+                        ".ec-crs-library-card, .ec-crs-paths-tab, .ec-crs-paths-stat, .ec-crs-paths-step"
+                    )
+                ) {
+                    element.classList.add(
+                        "ec-crs-reveal-delay-" + ((index % 4) + 1)
+                    );
+                }
+            });
+        });
+    }
+
+    prepareReveal(revealSelectors, "ec-crs-reveal");
+    prepareReveal(revealLeftSelectors, "ec-crs-reveal-left");
+    prepareReveal(revealRightSelectors, "ec-crs-reveal-right");
+    prepareReveal(revealScaleSelectors, "ec-crs-reveal-scale");
+
+    // Observe elements and reveal them as they enter the viewport.
+    const revealElements = document.querySelectorAll(
+        ".ec-crs-reveal, .ec-crs-reveal-left, " +
+        ".ec-crs-reveal-right, .ec-crs-reveal-scale"
+    );
+
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(
+                        "ec-crs-reveal-visible"
+                    );
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -30px 0px"
+        }
+    );
+
+    revealElements.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+});
+
+//--- End Courses Page Scroll Reveal Animation ---

@@ -1,6 +1,7 @@
 /*--- Latest Articles Section Start ---*/
 document.addEventListener("DOMContentLoaded", function () {
 
+    //--- Section Elements ---
     const latestSection = document.querySelector("#ec-blg-latest");
 
     if (!latestSection) {
@@ -9,512 +10,437 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const articleGrid = document.querySelector("#ec-blg-article-grid");
 
+    if (!articleGrid) {
+        return;
+    }
+
     const articles = Array.from(
         articleGrid.querySelectorAll(".ec-blg-latest-card")
     );
 
     const searchInput = document.querySelector("#ec-blg-search");
     const searchButton = document.querySelector("#ec-blg-search-button");
-
     const categoryFilter = document.querySelector("#ec-blg-category");
     const sortFilter = document.querySelector("#ec-blg-sort");
 
-    const topicButtons = document.querySelectorAll(
-        ".ec-blg-latest-topic"
+    const topicButtons = Array.from(
+        document.querySelectorAll(".ec-blg-latest-topic")
     );
 
     const clearButton = document.querySelector("#ec-blg-clear");
-    const emptyClearButton = document.querySelector(
-        "#ec-blg-empty-clear"
-    );
+    const emptyClearButton = document.querySelector("#ec-blg-empty-clear");
 
-    const articleCount = document.querySelector(
-        "#ec-blg-article-count"
-    );
+    const articleCount = document.querySelector("#ec-blg-article-count");
+    const visibleCount = document.querySelector("#ec-blg-visible-count");
+    const activeFilter = document.querySelector("#ec-blg-active-filter");
+    const emptyState = document.querySelector("#ec-blg-empty");
 
-    const visibleCount = document.querySelector(
-        "#ec-blg-visible-count"
-    );
-
-    const activeFilter = document.querySelector(
-        "#ec-blg-active-filter"
-    );
-
-    const emptyState = document.querySelector(
-        "#ec-blg-empty"
-    );
+    if (
+        !searchInput ||
+        !categoryFilter ||
+        !sortFilter ||
+        !emptyState
+    ) {
+        return;
+    }
 
     let currentSearch = "";
     let currentTopic = "all";
 
 
-    //--- Apply Filters ---
-    const applyFilters = function () {
-
-        const searchValue =
-            currentSearch.toLowerCase().trim();
-
-        const categoryValue =
-            categoryFilter.value;
-
-        const sortValue =
-            sortFilter.value;
-
-        let visibleArticles = [];
+    //--- Normalize Text ---
+    function normalizeText(value) {
+        return String(value || "").toLowerCase().trim();
+    }
 
 
+    //--- Update Active Topic ---
+    function updateActiveTopic(topic) {
+        currentTopic = topic;
+
+        topicButtons.forEach(function (button) {
+            const isActive = button.dataset.topic === currentTopic;
+
+            button.classList.toggle("active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
+    }
+
+
+    //--- Update Active Filter Label ---
+    function updateActiveFilter() {
+        if (!activeFilter) {
+            return;
+        }
+
+        const filters = [];
+
+        if (currentSearch.trim()) {
+            filters.push('"' + currentSearch.trim() + '"');
+        }
+
+        if (currentTopic !== "all") {
+            const selectedTopic = topicButtons.find(function (button) {
+                return button.dataset.topic === currentTopic;
+            });
+
+            if (selectedTopic) {
+                filters.push(selectedTopic.textContent.trim());
+            }
+        }
+
+        if (filters.length === 0) {
+            activeFilter.textContent = "All articles";
+        } else {
+            activeFilter.textContent = filters.join(" · ");
+        }
+    }
+
+
+    //--- Apply Search, Category, Topic and Sort ---
+    function applyFilters() {
+        const searchValue = normalizeText(currentSearch);
+        const categoryValue = categoryFilter.value;
+        const sortValue = sortFilter.value;
+
+        const visibleArticles = [];
+
+        //--- Filter Each Article ---
         articles.forEach(function (article) {
+            const title = normalizeText(
+                article.dataset.title ||
+                article.querySelector("h3")?.textContent
+            );
 
-            const title =
-                article.dataset.title.toLowerCase();
-
-            const category =
-                article.dataset.category;
-
-            const topic =
-                article.dataset.topic;
-
-            const articleText =
-                article.textContent.toLowerCase();
-
+            const category = normalizeText(article.dataset.category);
+            const topic = normalizeText(article.dataset.topic);
+            const articleText = normalizeText(article.textContent);
 
             const matchesSearch =
                 !searchValue ||
                 title.includes(searchValue) ||
                 articleText.includes(searchValue);
 
-
             const matchesCategory =
                 categoryValue === "all" ||
-                category === categoryValue;
-
+                category === normalizeText(categoryValue);
 
             const matchesTopic =
                 currentTopic === "all" ||
-                topic === currentTopic;
-
+                topic === normalizeText(currentTopic);
 
             const isVisible =
                 matchesSearch &&
                 matchesCategory &&
                 matchesTopic;
 
+            //--- Update Visibility Immediately ---
+            article.classList.toggle("is-hidden", !isVisible);
+            article.classList.toggle("is-filtered", !isVisible);
+
+            article.setAttribute("aria-hidden", String(!isVisible));
 
             if (isVisible) {
-
-                article.classList.remove("is-hidden");
-                article.classList.remove("is-filtered");
-
                 visibleArticles.push(article);
-
-            } else {
-
-                article.classList.add("is-filtered");
-
-                window.setTimeout(function () {
-
-                    article.classList.add("is-hidden");
-
-                }, 180);
-
             }
-
         });
 
 
-        //--- Sort Articles ---
-        visibleArticles.sort(function (
-            firstArticle,
-            secondArticle
-        ) {
+        //--- Sort Matching Articles ---
+        visibleArticles.sort(function (firstArticle, secondArticle) {
+            const firstDate = Number(firstArticle.dataset.date || 0);
+            const secondDate = Number(secondArticle.dataset.date || 0);
 
-            if (sortValue === "latest") {
+            const firstPopularity = Number(
+                firstArticle.dataset.popularity || 0
+            );
 
-                return Number(
-                    secondArticle.dataset.date
-                ) - Number(
-                    firstArticle.dataset.date
-                );
+            const secondPopularity = Number(
+                secondArticle.dataset.popularity || 0
+            );
 
+            const firstMinutes = Number(
+                firstArticle.dataset.minutes || 0
+            );
+
+            const secondMinutes = Number(
+                secondArticle.dataset.minutes || 0
+            );
+
+            const firstTitle = firstArticle.dataset.title ||
+                firstArticle.querySelector("h3")?.textContent || "";
+
+            const secondTitle = secondArticle.dataset.title ||
+                secondArticle.querySelector("h3")?.textContent || "";
+
+            switch (sortValue) {
+                case "latest":
+                    return secondDate - firstDate;
+
+                case "popular":
+                    return secondPopularity - firstPopularity;
+
+                case "read":
+                    return firstMinutes - secondMinutes;
+
+                case "long":
+                    return secondMinutes - firstMinutes;
+
+                case "title":
+                    return firstTitle.localeCompare(secondTitle);
+
+                default:
+                    return 0;
             }
-
-
-            if (sortValue === "popular") {
-
-                return Number(
-                    secondArticle.dataset.popularity
-                ) - Number(
-                    firstArticle.dataset.popularity
-                );
-
-            }
-
-
-            if (sortValue === "read") {
-
-                return Number(
-                    firstArticle.dataset.minutes
-                ) - Number(
-                    secondArticle.dataset.minutes
-                );
-
-            }
-
-
-            if (sortValue === "long") {
-
-                return Number(
-                    secondArticle.dataset.minutes
-                ) - Number(
-                    firstArticle.dataset.minutes
-                );
-
-            }
-
-
-            if (sortValue === "title") {
-
-                return firstArticle.dataset.title.localeCompare(
-                    secondArticle.dataset.title
-                );
-
-            }
-
-
-            return 0;
-
         });
 
 
-        //--- Reorder Grid ---
+        //--- Reorder Visible Articles Without Cloning ---
         visibleArticles.forEach(function (article) {
-
             articleGrid.appendChild(article);
+        });
 
+        //--- Keep Hidden Articles After Visible Articles ---
+        articles.forEach(function (article) {
+            if (!visibleArticles.includes(article)) {
+                articleGrid.appendChild(article);
+            }
         });
 
 
-        //--- Update Counts ---
-        articleCount.textContent = articles.length;
+        //--- Update Article Counts ---
+        if (articleCount) {
+            articleCount.textContent = articles.length;
+        }
 
-        visibleCount.textContent =
-            visibleArticles.length;
+        if (visibleCount) {
+            visibleCount.textContent = visibleArticles.length;
+        }
 
 
         //--- Empty State ---
-        if (visibleArticles.length === 0) {
+        const hasResults = visibleArticles.length > 0;
 
-            emptyState.hidden = false;
-
-        } else {
-
-            emptyState.hidden = true;
-
-        }
+        emptyState.hidden = hasResults;
+        articleGrid.hidden = !hasResults;
 
 
+        //--- Update Active Filter Text ---
         updateActiveFilter();
-
-    };
+    }
 
 
     //--- Search Button ---
-    searchButton.addEventListener(
-        "click",
-        function () {
-
-            currentSearch =
-                searchInput.value;
-
+    if (searchButton) {
+        searchButton.addEventListener("click", function () {
+            currentSearch = searchInput.value.trim();
             applyFilters();
-
-        }
-    );
-
-
-    //--- Search Enter ---
-    searchInput.addEventListener(
-        "keydown",
-        function (event) {
-
-            if (event.key === "Enter") {
-
-                event.preventDefault();
-
-                currentSearch =
-                    searchInput.value;
-
-                applyFilters();
-
-            }
-
-        }
-    );
+        });
+    }
 
 
-    //--- Live Search ---
-    searchInput.addEventListener(
-        "input",
-        function () {
+    //--- Search on Enter ---
+    searchInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
 
-            currentSearch =
-                searchInput.value;
-
+            currentSearch = searchInput.value.trim();
             applyFilters();
-
         }
-    );
-
-
-    //--- Category ---
-    categoryFilter.addEventListener(
-        "change",
-        function () {
-
-            applyFilters();
-
-        }
-    );
-
-
-    //--- Sort ---
-    sortFilter.addEventListener(
-        "change",
-        function () {
-
-            applyFilters();
-
-        }
-    );
-
-
-    //--- Topic Navigation ---
-    topicButtons.forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                currentTopic =
-                    button.dataset.topic;
-
-
-                topicButtons.forEach(
-                    function (topicButton) {
-
-                        const isActive =
-                            topicButton === button;
-
-                        topicButton.classList.toggle(
-                            "active",
-                            isActive
-                        );
-
-                        topicButton.setAttribute(
-                            "aria-pressed",
-                            String(isActive)
-                        );
-
-                    }
-                );
-
-
-                // Keep category filter in sync.
-                if (currentTopic === "all") {
-
-                    categoryFilter.value = "all";
-
-                } else {
-
-                    categoryFilter.value =
-                        currentTopic;
-
-                }
-
-
-                applyFilters();
-
-            }
-        );
-
     });
 
 
-    //--- Category / Topic Synchronisation ---
-    categoryFilter.addEventListener(
-        "change",
-        function () {
-
-            const selectedCategory =
-                categoryFilter.value;
-
-            currentTopic =
-                selectedCategory;
+    //--- Live Search ---
+    searchInput.addEventListener("input", function () {
+        currentSearch = searchInput.value.trim();
+        applyFilters();
+    });
 
 
-            topicButtons.forEach(
-                function (button) {
+    //--- Explore Topics ---
+    topicButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const selectedTopic = button.dataset.topic || "all";
 
-                    const isActive =
-                        button.dataset.topic === selectedCategory;
+            updateActiveTopic(selectedTopic);
 
-                    button.classList.toggle(
-                        "active",
-                        isActive
-                    );
-
-                    button.setAttribute(
-                        "aria-pressed",
-                        String(isActive)
-                    );
-
-                }
-            );
+            // Keep the category dropdown synchronized with the topic.
+            categoryFilter.value = selectedTopic;
 
             applyFilters();
-
-        }
-    );
-
-
-    //--- Clear All ---
-    const clearSearch = function () {
-
-        searchInput.value = "";
-
-        currentSearch = "";
-
-        currentTopic = "all";
-
-        categoryFilter.value = "all";
-
-        sortFilter.value = "latest";
+        });
+    });
 
 
-        topicButtons.forEach(
-            function (button) {
+    //--- Category Dropdown ---
+    categoryFilter.addEventListener("change", function () {
+        const selectedCategory = categoryFilter.value || "all";
 
-                const isActive =
-                    button.dataset.topic === "all";
-
-                button.classList.toggle(
-                    "active",
-                    isActive
-                );
-
-                button.setAttribute(
-                    "aria-pressed",
-                    String(isActive)
-                );
-
-            }
-        );
-
-
-        articles.forEach(
-            function (article) {
-
-                article.classList.remove(
-                    "is-filtered"
-                );
-
-                article.classList.remove(
-                    "is-hidden"
-                );
-
-            }
-        );
-
+        // Keep topic buttons synchronized with the category dropdown.
+        updateActiveTopic(selectedCategory);
 
         applyFilters();
-
-    };
-
-
-    clearButton.addEventListener(
-        "click",
-        function () {
-
-            clearSearch();
-
-        }
-    );
+    });
 
 
-    emptyClearButton.addEventListener(
-        "click",
-        function () {
-
-            clearSearch();
-
-        }
-    );
+    //--- Sort Dropdown ---
+    sortFilter.addEventListener("change", function () {
+        applyFilters();
+    });
 
 
-    //--- Active Filter Label ---
-    const updateActiveFilter = function () {
+    //--- Clear All Filters ---
+    function clearSearch() {
+        searchInput.value = "";
+        currentSearch = "";
 
-        const filters = [];
+        categoryFilter.value = "all";
+        sortFilter.value = "latest";
 
+        updateActiveTopic("all");
 
-        if (currentSearch.trim()) {
+        //--- Restore All Cards ---
+        articles.forEach(function (article) {
+            article.classList.remove("is-hidden", "is-filtered");
+            article.setAttribute("aria-hidden", "false");
+        });
 
-            filters.push(
-                `"${currentSearch.trim()}"`
-            );
-
-        }
-
-
-        if (currentTopic !== "all") {
-
-            filters.push(
-                document.querySelector(
-                    `.ec-blg-latest-topic[data-topic="${currentTopic}"]`
-                ).textContent.trim()
-            );
-
-        }
+        applyFilters();
+    }
 
 
-        if (filters.length === 0) {
+    //--- Clear Button ---
+    if (clearButton) {
+        clearButton.addEventListener("click", clearSearch);
+    }
 
-            activeFilter.textContent =
-                "All articles";
 
-        } else {
-
-            activeFilter.textContent =
-                filters.join(" · ");
-
-        }
-
-    };
+    //--- Empty State Reset Button ---
+    if (emptyClearButton) {
+        emptyClearButton.addEventListener("click", clearSearch);
+    }
 
 
     //--- Initial State ---
-    articleCount.textContent =
-        articles.length;
+    updateActiveTopic("all");
 
-    visibleCount.textContent =
-        articles.length;
+    categoryFilter.value = "all";
+    sortFilter.value = "latest";
+
+    articles.forEach(function (article) {
+        article.classList.remove("is-hidden", "is-filtered");
+        article.setAttribute("aria-hidden", "false");
+    });
 
     applyFilters();
 
 });
 /*--- Latest Articles Section End ---*/
 
-/*--- Popular / Trending Articles Section Start ---*/
-/*--- Popular / Trending Articles Section End ---*/
 
-/*--- Section Start ---*/
-/*--- Section End ---*/
+//--- Blog Page Scroll Reveal Animation ---
 
-/*--- Section Start ---*/
-/*--- Section End ---*/
+document.addEventListener("DOMContentLoaded", function () {
+    const revealSelectors = [
+        ".ec-all-hero-breadcrumb",
+        ".ec-all-hero-eyebrow",
+        ".ec-all-hero-title",
+        ".ec-all-hero-description",
+        ".ec-all-hero-meta",
+        ".ec-blg-latest-header",
+        ".ec-blg-latest-search",
+        ".ec-blg-latest-topics",
+        ".ec-blg-latest-toolbar",
+        ".ec-blg-latest-status",
+        ".ec-blg-popular-header",
+        ".ec-blg-popular-footer",
+        ".ec-all-cta-content"
+    ];
 
-/*--- Section Start ---*/
-/*--- Section End ---*/
+    const revealLeftSelectors = [
+        ".ec-all-hero-visual",
+        ".ec-blg-latest-heading",
+        ".ec-blg-popular-featured"
+    ];
 
-/*--- Section Start ---*/
-/*--- Section End ---*/
+    const revealRightSelectors = [
+        ".ec-blg-latest-count-box",
+        ".ec-blg-latest-search-inner",
+        ".ec-blg-popular-header-note",
+        ".ec-blg-popular-list",
+        ".ec-all-cta-visual"
+    ];
+
+    const revealScaleSelectors = [
+        ".ec-blg-latest-card",
+        ".ec-blg-latest-topic",
+        ".ec-blg-popular-item"
+    ];
+
+    // Respect reduced-motion preferences.
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        return;
+    }
+
+    // Add reveal classes to the selected elements.
+    function prepareReveal(selectors, revealClass) {
+        selectors.forEach(function (selector) {
+            const elements = document.querySelectorAll(selector);
+
+            elements.forEach(function (element, index) {
+                element.classList.add(revealClass);
+
+                // Stagger cards and repeated items.
+                if (
+                    revealClass === "ec-blg-reveal-scale" &&
+                    element.matches(
+                        ".ec-blg-latest-card, .ec-blg-latest-topic, .ec-blg-popular-item"
+                    )
+                ) {
+                    element.classList.add(
+                        "ec-blg-reveal-delay-" + ((index % 4) + 1)
+                    );
+                }
+            });
+        });
+    }
+
+    prepareReveal(revealSelectors, "ec-blg-reveal");
+    prepareReveal(revealLeftSelectors, "ec-blg-reveal-left");
+    prepareReveal(revealRightSelectors, "ec-blg-reveal-right");
+    prepareReveal(revealScaleSelectors, "ec-blg-reveal-scale");
+
+    // Reveal elements when they enter the viewport.
+    const revealElements = document.querySelectorAll(
+        ".ec-blg-reveal, .ec-blg-reveal-left, " +
+        ".ec-blg-reveal-right, .ec-blg-reveal-scale"
+    );
+
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(
+                        "ec-blg-reveal-visible"
+                    );
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -30px 0px"
+        }
+    );
+
+    revealElements.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+});
+
+//--- End Blog Page Scroll Reveal Animation ---

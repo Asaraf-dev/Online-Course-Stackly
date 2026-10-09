@@ -165,3 +165,115 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 /*--- FAQ Section End ---*/
+
+//--- Contact Page Scroll Reveal Animation ---
+
+document.addEventListener("DOMContentLoaded", function () {
+    const revealSelectors = [
+        ".ec-all-hero-breadcrumb",
+        ".ec-all-hero-eyebrow",
+        ".ec-all-hero-title",
+        ".ec-all-hero-description",
+        ".ec-all-hero-meta",
+        ".ec-cnt-intro-content",
+        ".ec-cnt-intro-bottom",
+        ".ec-cnt-form-content",
+        ".ec-cnt-location-content",
+        ".ec-cnt-location-meta",
+        ".ec-cnt-faq-content",
+        ".ec-cnt-faq-bottom",
+        ".ec-all-cta-content"
+    ];
+
+    const revealLeftSelectors = [
+        ".ec-all-hero-visual",
+        ".ec-cnt-intro-details",
+        ".ec-cnt-form-points",
+        ".ec-cnt-location-address",
+        ".ec-cnt-faq-list"
+    ];
+
+    const revealRightSelectors = [
+        ".ec-cnt-form-card",
+        ".ec-cnt-location-visual",
+        ".ec-cnt-intro-note",
+        ".ec-cnt-form-response",
+        ".ec-all-cta-visual"
+    ];
+
+    const revealScaleSelectors = [
+        ".ec-cnt-intro-detail",
+        ".ec-cnt-form-point",
+        ".ec-cnt-location-meta-item",
+        ".ec-cnt-faq-item"
+    ];
+
+    // Respect reduced-motion preferences.
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        return;
+    }
+
+    // Add reveal classes to the selected elements.
+    function prepareReveal(selectors, revealClass) {
+        selectors.forEach(function (selector) {
+            document.querySelectorAll(selector).forEach(
+                function (element, index) {
+                    element.classList.add(revealClass);
+
+                    // Stagger repeated cards and items.
+                    if (
+                        revealClass === "ec-cnt-reveal-scale" &&
+                        element.matches(
+                            ".ec-cnt-intro-detail, .ec-cnt-form-point, " +
+                            ".ec-cnt-location-meta-item, .ec-cnt-faq-item"
+                        )
+                    ) {
+                        element.classList.add(
+                            "ec-cnt-reveal-delay-" +
+                            ((index % 4) + 1)
+                        );
+                    }
+                }
+            );
+        });
+    }
+
+    prepareReveal(revealSelectors, "ec-cnt-reveal");
+    prepareReveal(revealLeftSelectors, "ec-cnt-reveal-left");
+    prepareReveal(revealRightSelectors, "ec-cnt-reveal-right");
+    prepareReveal(revealScaleSelectors, "ec-cnt-reveal-scale");
+
+    // Reveal elements when they enter the viewport.
+    const revealElements = document.querySelectorAll(
+        ".ec-cnt-reveal, .ec-cnt-reveal-left, " +
+        ".ec-cnt-reveal-right, .ec-cnt-reveal-scale"
+    );
+
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(
+                        "ec-cnt-reveal-visible"
+                    );
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -30px 0px"
+        }
+    );
+
+    revealElements.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+});
+
+//--- End Contact Page Scroll Reveal Animation ---

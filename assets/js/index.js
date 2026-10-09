@@ -976,3 +976,96 @@ if (testimonialsSection) {
     startTestimonialTimer();
 }
 /*--- Testimonials Section End ---*/
+
+const ssIndBlogReadButtons = document.querySelectorAll(".ec-ind-popular-featured-play");
+    if (ssIndBlogReadButtons.length) {
+        ssIndBlogReadButtons.forEach(function (ssButton) {
+            ssButton.addEventListener("click", function (ssEvent) {
+                ssEvent.preventDefault();
+                ssEvent.stopPropagation();
+                window.location.href = "404.html";
+            });
+        });
+    }
+
+    
+/*--- Scroll Reveal Animation Start ---*/
+document.addEventListener("DOMContentLoaded", function () {
+
+    const revealSelectors = [
+        ".ec-ind-about-header",
+        ".ec-ind-about-intro",
+        ".ec-ind-about-journey",
+        ".ec-ind-about-stat",
+        ".ec-ind-popular-header",
+        ".ec-ind-popular-featured",
+        ".ec-ind-popular-card",
+        ".ec-ind-popular-bottom",
+        ".ec-ind-journey-header",
+        ".ec-ind-journey-progress",
+        ".ec-ind-journey-visual",
+        ".ec-ind-journey-step",
+        ".ec-ind-journey-bottom-item",
+        ".ec-ind-results-header",
+        ".ec-ind-results-primary",
+        ".ec-ind-results-stat-card",
+        ".ec-ind-results-dashboard",
+        ".ec-ind-results-achievement",
+        ".ec-ind-testimonials-header",
+        ".ec-ind-testimonials-visual",
+        ".ec-ind-testimonials-content",
+        ".ec-ind-testimonials-preview-card",
+        ".ec-ind-testimonials-trust",
+        ".ec-ind-cta-content"
+    ];
+
+    const revealElements = [];
+
+    revealSelectors.forEach(function (selector) {
+        document.querySelectorAll(selector).forEach(function (element) {
+            if (!element.classList.contains("ec-reveal")) {
+                element.classList.add("ec-reveal");
+            }
+
+            revealElements.push(element);
+        });
+    });
+
+    //--- Avoid Animating the Same Element More Than Once ---
+    const uniqueElements = [...new Set(revealElements)];
+
+    //--- Respect Reduced Motion Preferences ---
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        uniqueElements.forEach(function (element) {
+            element.classList.add("ec-reveal-visible");
+        });
+
+        return;
+    }
+
+    //--- Reveal Elements When They Enter the Viewport ---
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("ec-reveal-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -35px 0px"
+        }
+    );
+
+    uniqueElements.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+
+});
+/*--- Scroll Reveal Animation End ---*/

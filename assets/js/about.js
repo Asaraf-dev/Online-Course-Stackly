@@ -226,3 +226,131 @@ if (ssIndBlogReadButtons.length) {
         });
     });
 }
+
+
+/*--- About Page Scroll Reveal Start ---*/
+document.addEventListener("DOMContentLoaded", function () {
+
+    //--- Elements Revealed from the Bottom ---
+    const revealSelectors = [
+        ".ec-all-hero-breadcrumb",
+        ".ec-all-hero-eyebrow",
+        ".ec-all-hero-title",
+        ".ec-all-hero-description",
+        ".ec-all-hero-meta",
+        ".ec-abt-story-header",
+        ".ec-abt-story-content",
+        ".ec-abt-story-timeline",
+        ".ec-abt-philosophy-header",
+        ".ec-abt-philosophy-intro",
+        ".ec-abt-philosophy-quote",
+        ".ec-abt-different-header",
+        ".ec-abt-different-intro",
+        ".ec-abt-different-bottom",
+        ".ec-abt-approach-header",
+        ".ec-abt-approach-intro",
+        ".ec-abt-approach-bottom",
+        ".ec-abt-impact-header",
+        ".ec-abt-impact-intro",
+        ".ec-abt-impact-bottom",
+        ".ec-abt-instructors-header",
+        ".ec-abt-instructors-intro",
+        ".ec-abt-instructors-bottom",
+        ".ec-all-cta-content"
+    ];
+
+    //--- Elements Revealed from the Left ---
+    const revealLeftSelectors = [
+        ".ec-abt-story-visual",
+        ".ec-abt-different-intro",
+        ".ec-abt-approach-title",
+        ".ec-abt-impact-heading"
+    ];
+
+    //--- Elements Revealed from the Right ---
+    const revealRightSelectors = [
+        ".ec-all-hero-visual",
+        ".ec-abt-philosophy-mark",
+        ".ec-abt-impact-intro-right",
+        ".ec-abt-instructors-intro-right",
+        ".ec-all-cta-visual"
+    ];
+
+    //--- Elements Revealed with a Scale Effect ---
+    const revealScaleSelectors = [
+        ".ec-abt-philosophy-principle",
+        ".ec-abt-different-item",
+        ".ec-abt-approach-step",
+        ".ec-abt-impact-stat",
+        ".ec-abt-instructor-card"
+    ];
+
+    //--- Collect Elements and Apply Reveal Classes ---
+    function prepareReveal(selectors, className) {
+        selectors.forEach(function (selector) {
+            document.querySelectorAll(selector).forEach(function (element) {
+                element.classList.add(className);
+            });
+        });
+    }
+
+    prepareReveal(revealSelectors, "ec-abt-reveal");
+    prepareReveal(revealLeftSelectors, "ec-abt-reveal-left");
+    prepareReveal(revealRightSelectors, "ec-abt-reveal-right");
+    prepareReveal(revealScaleSelectors, "ec-abt-reveal-scale");
+
+    //--- Stagger Repeated Cards ---
+    [
+        ".ec-abt-philosophy-principle",
+        ".ec-abt-different-item",
+        ".ec-abt-approach-step",
+        ".ec-abt-impact-stat",
+        ".ec-abt-instructor-card"
+    ].forEach(function (selector) {
+        document.querySelectorAll(selector).forEach(function (element, index) {
+            element.classList.add(
+                "ec-abt-reveal-delay-" + ((index % 4) + 1)
+            );
+        });
+    });
+
+    //--- Respect Reduced Motion Preferences ---
+    const allRevealElements = document.querySelectorAll(
+        ".ec-abt-reveal, .ec-abt-reveal-left, " +
+        ".ec-abt-reveal-right, .ec-abt-reveal-scale"
+    );
+
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+        allRevealElements.forEach(function (element) {
+            element.classList.add("ec-abt-reveal-visible");
+        });
+
+        return;
+    }
+
+    //--- Observe Elements as They Enter the Viewport ---
+    const revealObserver = new IntersectionObserver(
+        function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("ec-abt-reveal-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -30px 0px"
+        }
+    );
+
+    allRevealElements.forEach(function (element) {
+        revealObserver.observe(element);
+    });
+
+});
+/*--- About Page Scroll Reveal End ---*/

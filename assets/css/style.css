@@ -333,9 +333,9 @@
 .ec-ind-popular-course-badge i {color:#ffd166;}
 .ec-ind-popular-wishlist {display:flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(23,23,43,.25);color:var(--pd-white);cursor:pointer;backdrop-filter:blur(12px);transition:all .3s ease;}
 .ec-ind-popular-wishlist:hover,.ec-ind-popular-wishlist.active {border-color:var(--pd-secondary);background:var(--pd-secondary);transform:scale(1.08);}
-.ec-ind-popular-featured-play {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);}
+.ec-ind-popular-featured-play {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%); cursor: pointer;}
 .ec-ind-popular-featured-play span {display:flex;align-items:center;justify-content:center;width:76px;height:76px;border:1px solid rgba(255,255,255,.5);border-radius:50%;background:rgba(255,255,255,.12);color:var(--pd-white);font-size:27px;backdrop-filter:blur(12px);transition:all .35s ease;}
-.ec-ind-popular-featured:hover .ec-ind-popular-featured-play span {background:var(--pd-primary);border-color:var(--pd-primary);transform:scale(1.08);}
+.ec-ind-popular-featured-play span:hover {background:var(--pd-primary);border-color:var(--pd-primary);transform:scale(1.08);}
 .ec-ind-popular-featured-bottom {position:absolute;bottom:24px;left:24px;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.9);font-size:12px;font-weight:600;}
 .ec-ind-popular-featured-bottom i {width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.5);}
 .ec-ind-popular-featured-content {display:flex;flex-direction:column;justify-content:center;padding:50px;}
@@ -2129,6 +2129,11 @@ to {opacity:1;transform:translateY(0);}
 @keyframes ecBlgLatestCardIn {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ecBlgLatestCardOut {from{opacity:1}to{opacity:0}}
 
+/*--- Latest Articles Filter Visibility ---*/
+.ec-blg-latest-card.is-hidden {
+    display: none !important;
+}
+
 @media (max-width:1050px) {
 .ec-blg-latest {padding:95px 0;}
 .ec-blg-latest-grid {gap:18px;}
@@ -2781,3 +2786,315 @@ to {opacity:1;transform:translateY(0);}
 /*----------------------------------------------------------------------
                             Contact Page End
 ------------------------------------------------------------------------*/
+
+
+/*--- Scroll Reveal Animation ---*/
+.ec-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+    will-change: opacity, transform;
+}
+.ec-reveal.ec-reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.ec-reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-reveal-left.ec-reveal-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.ec-reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-reveal-right.ec-reveal-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+.ec-reveal-scale {
+    opacity: 0;
+    transform: scale(.94);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-reveal-scale.ec-reveal-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+.ec-reveal-delay-1 { transition-delay: .1s; }
+.ec-reveal-delay-2 { transition-delay: .2s; }
+.ec-reveal-delay-3 { transition-delay: .3s; }
+.ec-reveal-delay-4 { transition-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .ec-reveal,
+    .ec-reveal-left,
+    .ec-reveal-right,
+    .ec-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+        will-change: auto;
+    }
+}
+ /*--- End Scroll Reveal Animation ---*/
+
+ 
+/*--- About Page Reveal Animation ---*/
+.ec-abt-reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-abt-reveal-left {
+    opacity: 0;
+    transform: translateX(-35px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-abt-reveal-right {
+    opacity: 0;
+    transform: translateX(35px);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-abt-reveal-scale {
+    opacity: 0;
+    transform: scale(.95);
+    transition: opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1);
+}
+.ec-abt-reveal.ec-abt-reveal-visible,
+.ec-abt-reveal-left.ec-abt-reveal-visible,
+.ec-abt-reveal-right.ec-abt-reveal-visible,
+.ec-abt-reveal-scale.ec-abt-reveal-visible {
+    opacity: 1;
+    transform: translate(0,0) scale(1);
+}
+.ec-abt-reveal-delay-1 { transition-delay: .1s; }
+.ec-abt-reveal-delay-2 { transition-delay: .2s; }
+.ec-abt-reveal-delay-3 { transition-delay: .3s; }
+.ec-abt-reveal-delay-4 { transition-delay: .4s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .ec-abt-reveal,
+    .ec-abt-reveal-left,
+    .ec-abt-reveal-right,
+    .ec-abt-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+/*--- End About Page Reveal Animation ---*/
+
+
+/*--- Courses Page Reveal Animation ---*/
+
+.ec-crs-reveal,
+.ec-crs-reveal-left,
+.ec-crs-reveal-right,
+.ec-crs-reveal-scale {
+    opacity: 0;
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ec-crs-reveal {
+    transform: translateY(32px);
+}
+
+.ec-crs-reveal-left {
+    transform: translateX(-35px);
+}
+
+.ec-crs-reveal-right {
+    transform: translateX(35px);
+}
+
+.ec-crs-reveal-scale {
+    transform: scale(0.95);
+}
+
+.ec-crs-reveal.ec-crs-reveal-visible,
+.ec-crs-reveal-left.ec-crs-reveal-visible,
+.ec-crs-reveal-right.ec-crs-reveal-visible,
+.ec-crs-reveal-scale.ec-crs-reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/*--- Staggered Reveal Delays ---*/
+
+.ec-crs-reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.ec-crs-reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.ec-crs-reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.ec-crs-reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/*--- Reduced Motion Accessibility ---*/
+
+@media (prefers-reduced-motion: reduce) {
+    .ec-crs-reveal,
+    .ec-crs-reveal-left,
+    .ec-crs-reveal-right,
+    .ec-crs-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/*--- End Courses Page Reveal Animation ---*/
+
+
+/*--- Blog Page Reveal Animation ---*/
+
+.ec-blg-reveal,
+.ec-blg-reveal-left,
+.ec-blg-reveal-right,
+.ec-blg-reveal-scale {
+    opacity: 0;
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ec-blg-reveal {
+    transform: translateY(32px);
+}
+
+.ec-blg-reveal-left {
+    transform: translateX(-35px);
+}
+
+.ec-blg-reveal-right {
+    transform: translateX(35px);
+}
+
+.ec-blg-reveal-scale {
+    transform: scale(0.95);
+}
+
+.ec-blg-reveal.ec-blg-reveal-visible,
+.ec-blg-reveal-left.ec-blg-reveal-visible,
+.ec-blg-reveal-right.ec-blg-reveal-visible,
+.ec-blg-reveal-scale.ec-blg-reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/*--- Staggered Reveal Delays ---*/
+
+.ec-blg-reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.ec-blg-reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.ec-blg-reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.ec-blg-reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/*--- Reduced Motion Accessibility ---*/
+
+@media (prefers-reduced-motion: reduce) {
+    .ec-blg-reveal,
+    .ec-blg-reveal-left,
+    .ec-blg-reveal-right,
+    .ec-blg-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/*--- End Blog Page Reveal Animation ---*/
+
+/*--- Contact Page Reveal Animation ---*/
+
+.ec-cnt-reveal,
+.ec-cnt-reveal-left,
+.ec-cnt-reveal-right,
+.ec-cnt-reveal-scale {
+    opacity: 0;
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ec-cnt-reveal {
+    transform: translateY(32px);
+}
+
+.ec-cnt-reveal-left {
+    transform: translateX(-35px);
+}
+
+.ec-cnt-reveal-right {
+    transform: translateX(35px);
+}
+
+.ec-cnt-reveal-scale {
+    transform: scale(0.95);
+}
+
+.ec-cnt-reveal.ec-cnt-reveal-visible,
+.ec-cnt-reveal-left.ec-cnt-reveal-visible,
+.ec-cnt-reveal-right.ec-cnt-reveal-visible,
+.ec-cnt-reveal-scale.ec-cnt-reveal-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+}
+
+/*--- Staggered Reveal Delays ---*/
+
+.ec-cnt-reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.ec-cnt-reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.ec-cnt-reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.ec-cnt-reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/*--- Reduced Motion Accessibility ---*/
+
+@media (prefers-reduced-motion: reduce) {
+    .ec-cnt-reveal,
+    .ec-cnt-reveal-left,
+    .ec-cnt-reveal-right,
+    .ec-cnt-reveal-scale {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/*--- End Contact Page Reveal Animation ---*/
