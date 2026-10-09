@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Create Account | Stackly</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-lgn-body">
+
+    <!--- Register Page --->
+    <main class="ec-lgn-page">
+
+        <!--- Register Visual --->
+        <section class="ec-lgn-visual">
+
+            <a href="index.html" class="ec-lgn-brand" aria-label="Stackly home">
+                <span class="ec-lgn-brand-icon">
+                    <img src="assets/images/brand-logo.webp" alt="Stackly">
+                </span>
+                <span class="ec-lgn-brand-text">St<span>ackly</span></span>
+            </a>
+
+            <div class="ec-lgn-visual-content">
+
+                <span class="ec-lgn-visual-eyebrow">
+                    <span></span>
+                    YOUR NEXT CHAPTER STARTS HERE
+                </span>
+
+                <h1 class="ec-lgn-visual-title">
+                    Make room
+                    <span>for what's next.</span>
+                </h1>
+
+                <p class="ec-lgn-visual-description">
+                    Create your Stackly account and take the next step
+                    toward new skills, fresh ideas, and meaningful growth.
+                </p>
+
+                <div class="ec-lgn-visual-art">
+
+                    <div class="ec-lgn-art-orbit ec-lgn-art-orbit-one"></div>
+                    <div class="ec-lgn-art-orbit ec-lgn-art-orbit-two"></div>
+
+                    <div class="ec-lgn-art-card ec-lgn-art-card-one">
+                        <span class="ec-lgn-art-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </span>
+                        <div>
+                            <small>Your potential</small>
+                            <strong>Start with curiosity</strong>
+                        </div>
+                    </div>
+
+                    <div class="ec-lgn-art-center">
+                        <img src="assets/images/brand-logo.webp" alt="">
+                        <span>Learn.</span>
+                        <span>Create.</span>
+                    </div>
+
+                    <div class="ec-lgn-art-card ec-lgn-art-card-two">
+                        <span class="ec-lgn-art-icon">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                        <div>
+                            <small>Your future</small>
+                            <strong>Build what's next</strong>
+                        </div>
+                    </div>
+
+                    <span class="ec-lgn-art-dot ec-lgn-art-dot-one"></span>
+                    <span class="ec-lgn-art-dot ec-lgn-art-dot-two"></span>
+
+                </div>
+
+            </div>
+
+            <div class="ec-lgn-visual-footer">
+                <span>Learn. Create. Grow.</span>
+                <span>© <span id="ec-reg-year"></span> Stackly</span>
+            </div>
+
+        </section>
+        <!--- End Register Visual --->
+
+
+        <!--- Register Form Area --->
+        <section class="ec-lgn-panel ec-reg-panel">
+
+            <a href="index.html" class="ec-lgn-home">
+                <i class="bi bi-arrow-left"></i>
+                <span>Back to home</span>
+            </a>
+
+            <div class="ec-lgn-form-wrap ec-reg-form-wrap">
+
+                <div class="ec-lgn-heading">
+                    <span class="ec-lgn-eyebrow">START YOUR JOURNEY</span>
+
+                    <h2 class="ec-lgn-title">
+                        Create your
+                        <span>account.</span>
+                    </h2>
+
+                    <p class="ec-lgn-description">
+                        Enter your details to join the Stackly community.
+                    </p>
+                </div>
+
+
+                <!--- Role Selection --->
+                <fieldset class="ec-lgn-role-fieldset">
+                    <legend class="ec-lgn-role-legend">
+                        Create account as <span class="ec-reg-required">*</span>
+                    </legend>
+
+                    <div class="ec-lgn-role-options">
+
+                        <label class="ec-lgn-role-option active">
+                            <input type="radio" name="register-role" value="client" checked required>
+
+                            <span class="ec-lgn-role-icon">
+                                <i class="bi bi-person"></i>
+                            </span>
+
+                            <span class="ec-lgn-role-copy">
+                                <strong>Client</strong>
+                                <small>My learning</small>
+                            </span>
+
+                            <span class="ec-lgn-role-check">
+                                <i class="bi bi-check2"></i>
+                            </span>
+                        </label>
+
+                        <label class="ec-lgn-role-option">
+                            <input type="radio" name="register-role" value="admin" required>
+
+                            <span class="ec-lgn-role-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </span>
+
+                            <span class="ec-lgn-role-copy">
+                                <strong>Admin</strong>
+                                <small>Manage platform</small>
+                            </span>
+
+                            <span class="ec-lgn-role-check">
+                                <i class="bi bi-check2"></i>
+                            </span>
+                        </label>
+
+                    </div>
+                </fieldset>
+                <!--- End Role Selection --->
+
+
+                <!--- Register Form --->
+                <form id="ec-reg-form" class="ec-lgn-form" action="login.html" method="get">
+
+                    <!--- Full Name --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-reg-name">
+                            Full name <span class="ec-reg-required">*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-person ec-lgn-input-icon"></i>
+
+                            <input type="text" id="ec-reg-name" name="name" placeholder="Enter your full name"
+                                autocomplete="name" pattern="[A-Za-z ]+" title="Enter letters and spaces only."
+                                required>
+                        </div>
+                    </div>
+                    <!--- End Full Name --->
+
+
+                    <!--- Phone Number --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-reg-phone">
+                            Phone number <span class="ec-reg-required">*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-telephone ec-lgn-input-icon"></i>
+
+                            <input type="tel" id="ec-reg-phone" name="phone" placeholder="10-digit phone number"
+                                autocomplete="tel" inputmode="numeric" maxlength="10" minlength="10" pattern="[0-9]{10}"
+                                title="Enter exactly 10 digits." required>
+                        </div>
+                    </div>
+                    <!--- End Phone Number --->
+
+
+                    <!--- Email --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-reg-email">
+                            Email address <span class="ec-reg-required">*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-envelope ec-lgn-input-icon"></i>
+
+                            <input type="email" id="ec-reg-email" name="email" placeholder="you@example.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+                    <!--- End Email --->
+
+
+                    <!--- Password --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-reg-password">
+                            Password <span class="ec-reg-required">*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-lock ec-lgn-input-icon"></i>
+
+                            <input type="password" id="ec-reg-password" name="password"
+                                placeholder="Create a strong password" autocomplete="new-password" minlength="8"
+                                pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                                title="Use at least 8 characters with an uppercase letter, a lowercase letter, a number, and a special character."
+                                required>
+
+                            <button type="button" class="ec-lgn-password-toggle" id="ec-reg-password-toggle"
+                                aria-label="Show password" aria-pressed="false">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+
+                        <p class="ec-reg-password-hint">
+                            8+ characters, uppercase, lowercase, number
+                            and special character.
+                        </p>
+                    </div>
+                    <!--- End Password --->
+
+
+                    <!--- Confirm Password --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-reg-confirm-password">
+                            Confirm password <span class="ec-reg-required">*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-shield-lock ec-lgn-input-icon"></i>
+
+                            <input type="password" id="ec-reg-confirm-password" name="confirm-password"
+                                placeholder="Re-enter your password" autocomplete="new-password" required>
+
+                            <button type="button" class="ec-lgn-password-toggle" id="ec-reg-confirm-toggle"
+                                aria-label="Show confirm password" aria-pressed="false">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--- End Confirm Password --->
+
+
+                    <!--- Create Account --->
+                    <button type="submit" class="ec-lgn-submit ec-reg-submit">
+                        <span>Create account</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </button>
+                    <!--- End Create Account --->
+
+                </form>
+                <!--- End Register Form --->
+
+
+                <!--- Sign In --->
+                <div class="ec-lgn-signup">
+                    <span>Already have an account?</span>
+
+                    <a href="login.html">
+                        Sign in
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+                <!--- End Sign In --->
+
+
+                <div class="ec-lgn-security-note">
+                    <i class="bi bi-shield-check"></i>
+                    <span>Your next chapter starts with Stackly.</span>
+                </div>
+
+            </div>
+
+        </section>
+        <!--- End Register Form Area --->
+
+    </main>
+    <!--- End Register Page --->
+
+    <script src="assets/js/auth.js"></script>
+</body>
+
+</html>

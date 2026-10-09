@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Dashboard | E-Learning & Online Course Platform</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-dash-body" data-dashboard-role="client">
+
+    <!--- Dashboard Layout --->
+    <div class="ec-dash-layout">
+
+        <!--- Sidebar Overlay --->
+        <button type="button" class="ec-dash-overlay" id="ec-dash-overlay" aria-label="Close navigation menu"
+            tabindex="-1"></button>
+        <!--- End Sidebar Overlay --->
+
+
+        <!--- Sidebar --->
+        <aside class="ec-dash-sidebar" id="ec-dash-sidebar">
+
+            <!--- Sidebar Brand --->
+            <div class="ec-dash-sidebar-brand">
+                <a href="index.html" class="ec-dash-brand">
+                    <span class="ec-dash-brand-icon">
+                        <img src="assets/images/brand-logo.webp" alt="Stackly">
+                    </span>
+                    <span class="ec-dash-brand-text">St<span>ackly</span></span>
+                </a>
+
+                <button type="button" class="ec-dash-sidebar-close" id="ec-dash-sidebar-close"
+                    aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <!--- End Sidebar Brand --->
+
+
+            <!--- Mobile Account Details --->
+            <div class="ec-dash-mobile-user">
+                <div class="ec-dash-mobile-avatar">
+                    <img src="assets/images/profile-2.webp" alt="" class="ec-dash-avatar-image">
+                    <span class="ec-dash-avatar-initials">U</span>
+                </div>
+
+                <div class="ec-dash-mobile-user-info">
+                    <strong id="ec-dash-mobile-name">Welcome back</strong>
+                    <span id="ec-dash-mobile-email">user@example.com</span>
+                </div>
+            </div>
+            <!--- End Mobile Account Details --->
+
+
+            <!--- Navigation --->
+            <div class="ec-dash-nav-heading">WORKSPACE</div>
+
+            <nav class="ec-dash-nav" aria-label="Dashboard navigation">
+
+                <a href="client-dashboard.html" class="ec-dash-nav-link active" data-dash-link="overview">
+                    <i class="bi bi-grid-1x2"></i>
+                    <span>Overview</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-courses.html" class="ec-dash-nav-link" data-dash-link="courses">
+                    <i class="bi bi-collection-play"></i>
+                    <span>Courses</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-learning.html" class="ec-dash-nav-link" data-dash-link="learning">
+                    <i class="bi bi-journal-check"></i>
+                    <span id="ec-dash-third-link">My Learning</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-profile.html" class="ec-dash-nav-link" data-dash-link="profile">
+                    <i class="bi bi-person"></i>
+                    <span id="ec-dash-fourth-link">Profile</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <div class="ec-dash-nav-divider"></div>
+
+                <a href="login.html" class="ec-dash-nav-link ec-dash-logout" id="ec-dash-logout">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+            </nav>
+            <!--- End Navigation --->
+
+
+            <!--- Sidebar Footer --->
+            <div class="ec-dash-sidebar-footer">
+                <span class="ec-dash-sidebar-footer-icon">
+                    <i class="bi bi-stars"></i>
+                </span>
+                <div>
+                    <strong>Keep growing.</strong>
+                    <span>Learn. Create. Grow.</span>
+                </div>
+            </div>
+            <!--- End Sidebar Footer --->
+
+        </aside>
+        <!--- End Sidebar --->
+
+
+        <!--- Main Area --->
+        <div class="ec-dash-main">
+
+            <!--- Topbar --->
+            <header class="ec-dash-topbar">
+
+                <div class="ec-dash-topbar-left">
+
+                    <!--- Three Dot Menu: Tablet and Mobile --->
+                    <button type="button" class="ec-dash-menu-toggle" id="ec-dash-menu-toggle"
+                        aria-label="Open navigation menu" aria-controls="ec-dash-sidebar" aria-expanded="false">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                    <!--- End Three Dot Menu --->
+
+                    <div class="ec-dash-topbar-heading">
+                        <span class="ec-dash-topbar-eyebrow">STACKLY WORKSPACE</span>
+                        <h1 id="ec-dash-page-title">Client Dashboard</h1>
+                    </div>
+
+                </div>
+
+
+                <!--- Desktop and Tablet User Details --->
+                <div class="ec-dash-topbar-right">
+
+                    <div class="ec-dash-topbar-user">
+                        <span class="ec-dash-topbar-user-label">SIGNED IN AS</span>
+                        <strong id="ec-dash-topbar-email">user@example.com</strong>
+                    </div>
+
+                    <button type="button" class="ec-dash-profile-button" id="ec-dash-profile-button"
+                        aria-label="View profile" title="View profile">
+                        <img src="assets/images/profile-2.webp" alt="Profile" class="ec-dash-avatar-image">
+                        <span class="ec-dash-avatar-initials">U</span>
+                        <span class="ec-dash-profile-status"></span>
+                    </button>
+
+                </div>
+                <!--- End User Details --->
+
+            </header>
+            <!--- End Topbar --->
+
+
+            <!--- Dashboard Content --->
+            <!--- Client Overview Content --->
+            <main class="ec-dash-content ec-cld-content" id="ec-dash-overview">
+
+                <!--- Welcome Banner --->
+                <section class="ec-cld-welcome">
+                    <div class="ec-cld-welcome-copy">
+                        <span class="ec-cld-eyebrow">
+                            <i class="bi bi-stars"></i>
+                            YOUR LEARNING SPACE
+                        </span>
+                        <h2>Keep moving forward, <span id="ec-cld-welcome-name">Learner</span>.</h2>
+                        <p>Every lesson brings you closer to your next achievement. Ready to keep learning?</p>
+                        <a href="404.html" class="ec-cld-primary-btn">
+                            Explore courses <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+                    <div class="ec-cld-welcome-art" aria-hidden="true">
+                        <div class="ec-cld-art-orbit ec-cld-art-orbit-one"></div>
+                        <div class="ec-cld-art-orbit ec-cld-art-orbit-two"></div>
+                        <div class="ec-cld-art-book"><i class="bi bi-book-half"></i></div>
+                        <span class="ec-cld-art-star ec-cld-art-star-one"><i class="bi bi-stars"></i></span>
+                        <span class="ec-cld-art-star ec-cld-art-star-two"><i
+                                class="bi bi-lightning-charge-fill"></i></span>
+                        <span class="ec-cld-art-dot ec-cld-art-dot-one"></span>
+                        <span class="ec-cld-art-dot ec-cld-art-dot-two"></span>
+                    </div>
+                </section>
+                <!--- End Welcome Banner --->
+
+                <!--- Overview Heading --->
+                <section class="ec-cld-section-heading">
+                    <div>
+                        <span class="ec-cld-section-kicker">YOUR PROGRESS</span>
+                        <h2>Your learning at a glance</h2>
+                        <p>Small steps today. Big achievements tomorrow.</p>
+                    </div>
+                    <div class="ec-cld-date">
+                        <i class="bi bi-calendar3"></i>
+                        <span id="ec-cld-current-date">Your learning dashboard</span>
+                    </div>
+                </section>
+                <!--- End Overview Heading --->
+
+                <!--- Learning Statistics --->
+                <section class="ec-cld-stats" aria-label="Learning statistics">
+                    <article class="ec-cld-stat-card">
+                        <div class="ec-cld-stat-top">
+                            <span class="ec-cld-stat-icon ec-cld-stat-icon-purple"><i
+                                    class="bi bi-collection-play"></i></span>
+                            <span class="ec-cld-stat-caption">MY LIBRARY</span>
+                        </div>
+                        <strong class="ec-cld-stat-value" id="ec-cld-stat-enrolled">3</strong>
+                        <span class="ec-cld-stat-label">Enrolled courses</span>
+                        <div class="ec-cld-stat-foot"><i class="bi bi-bookmark-check"></i> Your learning collection
+                        </div>
+                    </article>
+
+                    <article class="ec-cld-stat-card">
+                        <div class="ec-cld-stat-top">
+                            <span class="ec-cld-stat-icon ec-cld-stat-icon-teal"><i
+                                    class="bi bi-graph-up-arrow"></i></span>
+                            <span class="ec-cld-stat-caption">IN MOTION</span>
+                        </div>
+                        <strong class="ec-cld-stat-value" id="ec-cld-stat-active">2</strong>
+                        <span class="ec-cld-stat-label">Courses in progress</span>
+                        <div class="ec-cld-stat-foot"><i class="bi bi-play-circle"></i> Keep your momentum</div>
+                    </article>
+
+                    <article class="ec-cld-stat-card">
+                        <div class="ec-cld-stat-top">
+                            <span class="ec-cld-stat-icon ec-cld-stat-icon-orange"><i class="bi bi-trophy"></i></span>
+                            <span class="ec-cld-stat-caption">ACHIEVEMENTS</span>
+                        </div>
+                        <strong class="ec-cld-stat-value" id="ec-cld-stat-completed">1</strong>
+                        <span class="ec-cld-stat-label">Courses completed</span>
+                        <div class="ec-cld-stat-foot"><i class="bi bi-patch-check"></i> Progress worth celebrating</div>
+                    </article>
+
+                    <article class="ec-cld-stat-card">
+                        <div class="ec-cld-stat-top">
+                            <span class="ec-cld-stat-icon ec-cld-stat-icon-pink"><i
+                                    class="bi bi-clock-history"></i></span>
+                            <span class="ec-cld-stat-caption">TIME INVESTED</span>
+                        </div>
+                        <strong class="ec-cld-stat-value"><span id="ec-cld-stat-hours">12</span><small>
+                                hrs</small></strong>
+                        <span class="ec-cld-stat-label">Learning time</span>
+                        <div class="ec-cld-stat-foot"><i class="bi bi-hourglass-split"></i> Every minute adds up</div>
+                    </article>
+                </section>
+                <!--- End Learning Statistics --->
+
+                <!--- Main Learning Grid --->
+                <div class="ec-cld-main-grid">
+
+                    <!--- Continue Learning --->
+                    <section class="ec-cld-panel ec-cld-continue-panel">
+                        <div class="ec-cld-panel-heading">
+                            <div>
+                                <span class="ec-cld-section-kicker">PICK UP WHERE YOU LEFT OFF</span>
+                                <h2>Continue learning</h2>
+                            </div>
+                            <a href="404.html" class="ec-cld-text-link">
+                                My learning <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="ec-cld-course-list" id="ec-cld-course-list">
+                            <!-- Courses are rendered by client-overview.js -->
+                        </div>
+
+                        <div class="ec-cld-empty" id="ec-cld-course-empty" hidden>
+                            <span><i class="bi bi-journal-plus"></i></span>
+                            <h3>Your next chapter starts here</h3>
+                            <p>Explore the course library and find something new to learn.</p>
+                            <a href="404.html" class="ec-cld-primary-btn">Browse courses <i
+                                    class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </section>
+                    <!--- End Continue Learning --->
+
+                    <!--- Weekly Learning Goal --->
+                    <section class="ec-cld-panel ec-cld-goal-panel">
+                        <div class="ec-cld-panel-heading">
+                            <div>
+                                <span class="ec-cld-section-kicker">BUILD YOUR ROUTINE</span>
+                                <h2>Weekly learning goal</h2>
+                            </div>
+                            <span class="ec-cld-goal-heading-icon"><i class="bi bi-bullseye"></i></span>
+                        </div>
+
+                        <div class="ec-cld-goal-progress">
+                            <div class="ec-cld-goal-ring" id="ec-cld-goal-ring">
+                                <div class="ec-cld-goal-ring-inner">
+                                    <strong id="ec-cld-goal-percent">60%</strong>
+                                    <span>of your goal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ec-cld-goal-numbers">
+                            <div><strong id="ec-cld-goal-completed">3 hrs</strong><span>Completed</span></div>
+                            <div><strong id="ec-cld-goal-target">5 hrs</strong><span>Weekly target</span></div>
+                        </div>
+
+                        <div class="ec-cld-goal-message">
+                            <span><i class="bi bi-lightbulb"></i></span>
+                            <p id="ec-cld-goal-message">You're building a great habit. Two more hours will reach your
+                                weekly goal!</p>
+                        </div>
+
+                        <a href="404.html" class="ec-cld-goal-link">
+                            View learning activity <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </section>
+                    <!--- End Weekly Learning Goal --->
+
+                </div>
+                <!--- End Main Learning Grid --->
+
+                <!--- Recommended Courses --->
+                <section class="ec-cld-panel ec-cld-recommended-panel">
+                    <div class="ec-cld-panel-heading">
+                        <div>
+                            <span class="ec-cld-section-kicker">HANDPICKED FOR YOUR NEXT STEP</span>
+                            <h2>Explore something new</h2>
+                            <p>Discover skills you can put into practice.</p>
+                        </div>
+                        <a href="404.html" class="ec-cld-text-link">
+                            View all courses <i class="bi bi-arrow-up-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="ec-cld-recommended-grid">
+                        <article class="ec-cld-recommended-card">
+                            <div class="ec-cld-recommended-image ec-cld-recommended-image-ui">
+                                <img src="assets/images/ui-ux-design.webp" alt="UI and UX design course"
+                                    loading="lazy">
+                                <span class="ec-cld-recommended-tag">DESIGN</span>
+                                <span class="ec-cld-recommended-image-icon"><i class="bi bi-palette2"></i></span>
+                            </div>
+                            <div class="ec-cld-recommended-body">
+                                <span class="ec-cld-recommended-meta">CREATIVE SKILLS <span>•</span> BEGINNER</span>
+                                <h3>UI/UX Design Fundamentals</h3>
+                                <p>Learn to turn ideas into intuitive digital experiences.</p>
+                                <a href="404.html" class="ec-cld-recommended-link">Explore course <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="ec-cld-recommended-card">
+                            <div class="ec-cld-recommended-image ec-cld-recommended-image-data">
+                                <img src="assets/images/ai-tools.webp" alt="Data science course"
+                                    loading="lazy">
+                                <span class="ec-cld-recommended-tag">DATA</span>
+                                <span class="ec-cld-recommended-image-icon"><i class="bi bi-bar-chart-line"></i></span>
+                            </div>
+                            <div class="ec-cld-recommended-body">
+                                <span class="ec-cld-recommended-meta">TECHNOLOGY <span>•</span> INTERMEDIATE</span>
+                                <h3>Data Science Essentials</h3>
+                                <p>Build confidence working with data and insights.</p>
+                                <a href="404.html" class="ec-cld-recommended-link">Explore course <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="ec-cld-recommended-card">
+                            <div class="ec-cld-recommended-image ec-cld-recommended-image-marketing">
+                                <img src="assets/images/digital-marketing.webp" alt="Digital marketing course"
+                                    loading="lazy">
+                                <span class="ec-cld-recommended-tag">MARKETING</span>
+                                <span class="ec-cld-recommended-image-icon"><i class="bi bi-megaphone"></i></span>
+                            </div>
+                            <div class="ec-cld-recommended-body">
+                                <span class="ec-cld-recommended-meta">GROWTH <span>•</span> BEGINNER</span>
+                                <h3>Digital Marketing Strategy</h3>
+                                <p>Explore campaigns, audiences, and digital growth.</p>
+                                <a href="404.html" class="ec-cld-recommended-link">Explore course <i
+                                        class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                <!--- End Recommended Courses --->
+
+                <!--- Learning Inspiration --->
+                <section class="ec-cld-inspiration">
+                    <div class="ec-cld-inspiration-icon"><i class="bi bi-stars"></i></div>
+                    <div class="ec-cld-inspiration-copy">
+                        <span>YOUR NEXT BREAKTHROUGH</span>
+                        <h2>Consistency beats perfection.</h2>
+                        <p>Even 20 minutes of focused learning can move you forward. Show up for your goals today.</p>
+                    </div>
+                    <a href="404.html" class="ec-cld-inspiration-btn">
+                        Back to learning <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <span class="ec-cld-inspiration-decoration" aria-hidden="true"><i
+                            class="bi bi-lightbulb"></i></span>
+                </section>
+                <!--- End Learning Inspiration --->
+
+            </main>
+            <!--- End Client Overview Content --->
+
+            <!--- End Dashboard Content --->
+
+        </div>
+        <!--- End Main Area --->
+
+    </div>
+    <!--- End Dashboard Layout --->
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/client-overview.js"></script>
+</body>
+
+</html>

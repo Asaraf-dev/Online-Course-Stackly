@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Dashboard | E-Learning & Online Course Platform</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-dash-body" data-dashboard-role="admin">
+
+    <!--- Dashboard Layout --->
+    <div class="ec-dash-layout">
+
+        <!--- Sidebar Overlay --->
+        <button type="button" class="ec-dash-overlay" id="ec-dash-overlay" aria-label="Close navigation menu"
+            tabindex="-1"></button>
+        <!--- End Sidebar Overlay --->
+
+
+        <!--- Sidebar --->
+        <aside class="ec-dash-sidebar" id="ec-dash-sidebar">
+
+            <!--- Sidebar Brand --->
+            <div class="ec-dash-sidebar-brand">
+                <a href="index.html" class="ec-dash-brand">
+                    <span class="ec-dash-brand-icon">
+                        <img src="assets/images/brand-logo.webp" alt="Stackly">
+                    </span>
+                    <span class="ec-dash-brand-text">St<span>ackly</span></span>
+                </a>
+
+                <button type="button" class="ec-dash-sidebar-close" id="ec-dash-sidebar-close"
+                    aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <!--- End Sidebar Brand --->
+
+
+            <!--- Mobile Account Details --->
+            <div class="ec-dash-mobile-user">
+                <div class="ec-dash-mobile-avatar">
+                    <img src="assets/images/profile-1.webp" alt="" class="ec-dash-avatar-image">
+                    <span class="ec-dash-avatar-initials">U</span>
+                </div>
+
+                <div class="ec-dash-mobile-user-info">
+                    <strong id="ec-dash-mobile-name">Welcome back</strong>
+                    <span id="ec-dash-mobile-email">user@example.com</span>
+                </div>
+            </div>
+            <!--- End Mobile Account Details --->
+
+
+            <!--- Navigation --->
+            <div class="ec-dash-nav-heading">WORKSPACE</div>
+
+            <nav class="ec-dash-nav" aria-label="Dashboard navigation">
+
+                <a href="admin-dashboard.html" class="ec-dash-nav-link active" data-dash-link="overview">
+                    <i class="bi bi-grid-1x2"></i>
+                    <span>Overview</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-courses.html" class="ec-dash-nav-link" data-dash-link="courses">
+                    <i class="bi bi-collection-play"></i>
+                    <span>Courses</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-progress.html" class="ec-dash-nav-link" data-dash-link="My Progress">
+                    <i class="bi bi-journal-check"></i>
+                    <span id="ec-dash-third-link">My Progress</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-profile.html" class="ec-dash-nav-link" data-dash-link="profile">
+                    <i class="bi bi-person"></i>
+                    <span id="ec-dash-fourth-link">Profile</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <div class="ec-dash-nav-divider"></div>
+
+                <a href="login.html" class="ec-dash-nav-link ec-dash-logout" id="ec-dash-logout">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+            </nav>
+            <!--- End Navigation --->
+
+
+            <!--- Sidebar Footer --->
+            <div class="ec-dash-sidebar-footer">
+                <span class="ec-dash-sidebar-footer-icon">
+                    <i class="bi bi-stars"></i>
+                </span>
+                <div>
+                    <strong>Keep growing.</strong>
+                    <span>Learn. Create. Grow.</span>
+                </div>
+            </div>
+            <!--- End Sidebar Footer --->
+
+        </aside>
+        <!--- End Sidebar --->
+
+
+        <!--- Main Area --->
+        <div class="ec-dash-main">
+
+            <!--- Topbar --->
+            <header class="ec-dash-topbar">
+
+                <div class="ec-dash-topbar-left">
+
+                    <!--- Three Dot Menu: Tablet and Mobile --->
+                    <button type="button" class="ec-dash-menu-toggle" id="ec-dash-menu-toggle"
+                        aria-label="Open navigation menu" aria-controls="ec-dash-sidebar" aria-expanded="false">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                    <!--- End Three Dot Menu --->
+
+                    <div class="ec-dash-topbar-heading">
+                        <span class="ec-dash-topbar-eyebrow">STACKLY WORKSPACE</span>
+                        <h1 id="ec-dash-page-title">Admin Dashboard</h1>
+                    </div>
+
+                </div>
+
+
+                <!--- Desktop and Tablet User Details --->
+                <div class="ec-dash-topbar-right">
+
+                    <div class="ec-dash-topbar-user">
+                        <span class="ec-dash-topbar-user-label">SIGNED IN AS</span>
+                        <strong id="ec-dash-topbar-email">user@example.com</strong>
+                    </div>
+
+                    <button type="button" class="ec-dash-profile-button" id="ec-dash-profile-button"
+                        aria-label="View profile" title="View profile">
+                        <img src="assets/images/profile-1.webp" alt="Profile" class="ec-dash-avatar-image">
+                        <span class="ec-dash-avatar-initials">U</span>
+                        <span class="ec-dash-profile-status"></span>
+                    </button>
+
+                </div>
+                <!--- End User Details --->
+
+            </header>
+            <!--- End Topbar --->
+
+
+            <!--- Dashboard Content --->
+
+            <!--- Admin Overview --->
+            <main class="ec-dash-content" id="ec-dash-overview">
+
+                <!--- Overview Welcome --->
+                <section class="ec-adm-overview-welcome">
+                    <div class="ec-adm-overview-welcome-copy">
+                        <span class="ec-adm-overview-eyebrow">
+                            <span class="ec-adm-overview-live-dot"></span>
+                            YOUR LEARNING PLATFORM
+                        </span>
+                        <h2>Good to see you, <span id="ec-adm-overview-admin-name">Admin</span>.</h2>
+                        <p>Here's what's happening across your Stackly learning community.</p>
+                        <span class="ec-adm-overview-date" id="ec-adm-overview-date"></span>
+                    </div>
+                    <div class="ec-adm-overview-welcome-actions">
+                        <a href="404.html" class="ec-adm-overview-btn ec-adm-overview-btn-light">
+                            <i class="bi bi-plus-lg"></i> Manage courses
+                        </a>
+                        <button type="button" class="ec-adm-overview-icon-btn" id="ec-adm-overview-refresh"
+                            aria-label="Refresh overview">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    </div>
+                    <div class="ec-adm-overview-welcome-decoration" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                    </div>
+                </section>
+                <!--- End Overview Welcome --->
+
+                <!--- Overview Section Heading --->
+                <section class="ec-adm-overview-section-heading">
+                    <div>
+                        <span class="ec-adm-overview-section-kicker">AT A GLANCE</span>
+                        <h2>Platform overview</h2>
+                        <p>A snapshot of your platform's performance.</p>
+                    </div>
+                    <span class="ec-adm-overview-updated">
+                        <i class="bi bi-clock-history"></i> Demo analytics
+                    </span>
+                </section>
+                <!--- End Overview Section Heading --->
+
+                <!--- Overview Metrics --->
+                <section class="ec-adm-overview-metrics" aria-label="Platform statistics">
+
+                    <article class="ec-adm-overview-metric">
+                        <div class="ec-adm-overview-metric-top">
+                            <span class="ec-adm-overview-metric-label">Total students</span>
+                            <span class="ec-adm-overview-metric-icon ec-adm-overview-icon-purple"><i
+                                    class="bi bi-people"></i></span>
+                        </div>
+                        <strong class="ec-adm-overview-metric-value" data-count="2486">0</strong>
+                        <div class="ec-adm-overview-metric-bottom">
+                            <span class="ec-adm-overview-trend"><i class="bi bi-arrow-up-right"></i> 12.8%</span>
+                            <span>vs. last month</span>
+                        </div>
+                        <div class="ec-adm-overview-metric-line ec-adm-overview-line-purple"></div>
+                    </article>
+
+                    <article class="ec-adm-overview-metric">
+                        <div class="ec-adm-overview-metric-top">
+                            <span class="ec-adm-overview-metric-label">Published courses</span>
+                            <span class="ec-adm-overview-metric-icon ec-adm-overview-icon-pink"><i
+                                    class="bi bi-collection-play"></i></span>
+                        </div>
+                        <strong class="ec-adm-overview-metric-value" data-count="48">0</strong>
+                        <div class="ec-adm-overview-metric-bottom">
+                            <span class="ec-adm-overview-metric-note">6 new this month</span>
+                        </div>
+                        <div class="ec-adm-overview-metric-line ec-adm-overview-line-pink"></div>
+                    </article>
+
+                    <article class="ec-adm-overview-metric">
+                        <div class="ec-adm-overview-metric-top">
+                            <span class="ec-adm-overview-metric-label">Enrollments</span>
+                            <span class="ec-adm-overview-metric-icon ec-adm-overview-icon-green"><i
+                                    class="bi bi-journal-check"></i></span>
+                        </div>
+                        <strong class="ec-adm-overview-metric-value" data-count="3842">0</strong>
+                        <div class="ec-adm-overview-metric-bottom">
+                            <span class="ec-adm-overview-trend"><i class="bi bi-arrow-up-right"></i> 8.4%</span>
+                            <span>vs. last month</span>
+                        </div>
+                        <div class="ec-adm-overview-metric-line ec-adm-overview-line-green"></div>
+                    </article>
+
+                    <article class="ec-adm-overview-metric">
+                        <div class="ec-adm-overview-metric-top">
+                            <span class="ec-adm-overview-metric-label">Total revenue</span>
+                            <span class="ec-adm-overview-metric-icon ec-adm-overview-icon-orange"><i
+                                    class="bi bi-wallet2"></i></span>
+                        </div>
+                        <strong class="ec-adm-overview-metric-value ec-adm-overview-revenue"
+                            data-count="284650">₹0</strong>
+                        <div class="ec-adm-overview-metric-bottom">
+                            <span class="ec-adm-overview-trend"><i class="bi bi-arrow-up-right"></i> 16.2%</span>
+                            <span>vs. last month</span>
+                        </div>
+                        <div class="ec-adm-overview-metric-line ec-adm-overview-line-orange"></div>
+                    </article>
+
+                </section>
+                <!--- End Overview Metrics --->
+
+                <!--- Analytics Grid --->
+                <section class="ec-adm-overview-analytics">
+
+                    <!--- Enrollment Chart --->
+                    <article class="ec-adm-overview-panel ec-adm-overview-enrollment-panel">
+                        <div class="ec-adm-overview-panel-heading">
+                            <div>
+                                <span class="ec-adm-overview-section-kicker">GROWTH &amp; ENGAGEMENT</span>
+                                <h3>Enrollment activity</h3>
+                                <p>Track how students join your courses.</p>
+                            </div>
+                            <label class="ec-adm-overview-select-wrap">
+                                <span class="ec-adm-overview-sr-only">Enrollment chart period</span>
+                                <select id="ec-adm-overview-chart-range" aria-label="Enrollment chart period">
+                                    <option value="week">7 days</option>
+                                    <option value="month" selected>12 months</option>
+                                    <option value="year">Yearly</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div class="ec-adm-overview-chart-summary">
+                            <strong id="ec-adm-overview-chart-total">1,284</strong>
+                            <span><i class="bi bi-graph-up-arrow"></i> Enrollments in selected period</span>
+                        </div>
+                        <div class="ec-adm-overview-chart-wrap">
+                            <canvas id="ec-adm-overview-chart" role="img"
+                                aria-label="Enrollment activity chart"></canvas>
+                        </div>
+                        <div class="ec-adm-overview-chart-legend">
+                            <span><i></i> Student enrollments</span>
+                            <span class="ec-adm-overview-chart-caption">Illustrative sample data</span>
+                        </div>
+                    </article>
+                    <!--- End Enrollment Chart --->
+
+                    <!--- Course Categories --->
+                    <article class="ec-adm-overview-panel ec-adm-overview-category-panel">
+                        <div class="ec-adm-overview-panel-heading">
+                            <div>
+                                <span class="ec-adm-overview-section-kicker">LEARNING INTERESTS</span>
+                                <h3>Course categories</h3>
+                                <p>Enrollment distribution by topic.</p>
+                            </div>
+                            <span class="ec-adm-overview-heading-icon"><i class="bi bi-pie-chart"></i></span>
+                        </div>
+
+                        <div class="ec-adm-overview-category-list">
+                            <div class="ec-adm-overview-category-item">
+                                <div class="ec-adm-overview-category-info">
+                                    <span class="ec-adm-overview-category-symbol ec-adm-overview-cat-purple"><i
+                                            class="bi bi-code-slash"></i></span>
+                                    <div><strong>Development</strong><span>1,245 students</span></div>
+                                    <b>36%</b>
+                                </div>
+                                <div class="ec-adm-overview-progress"><span class="ec-adm-overview-progress-purple"
+                                        style="--ec-adm-progress:36%"></span></div>
+                            </div>
+
+                            <div class="ec-adm-overview-category-item">
+                                <div class="ec-adm-overview-category-info">
+                                    <span class="ec-adm-overview-category-symbol ec-adm-overview-cat-pink"><i
+                                            class="bi bi-palette"></i></span>
+                                    <div><strong>UI / UX Design</strong><span>864 students</span></div>
+                                    <b>25%</b>
+                                </div>
+                                <div class="ec-adm-overview-progress"><span class="ec-adm-overview-progress-pink"
+                                        style="--ec-adm-progress:25%"></span></div>
+                            </div>
+
+                            <div class="ec-adm-overview-category-item">
+                                <div class="ec-adm-overview-category-info">
+                                    <span class="ec-adm-overview-category-symbol ec-adm-overview-cat-green"><i
+                                            class="bi bi-bar-chart"></i></span>
+                                    <div><strong>Data Science</strong><span>691 students</span></div>
+                                    <b>20%</b>
+                                </div>
+                                <div class="ec-adm-overview-progress"><span class="ec-adm-overview-progress-green"
+                                        style="--ec-adm-progress:20%"></span></div>
+                            </div>
+
+                            <div class="ec-adm-overview-category-item">
+                                <div class="ec-adm-overview-category-info">
+                                    <span class="ec-adm-overview-category-symbol ec-adm-overview-cat-orange"><i
+                                            class="bi bi-megaphone"></i></span>
+                                    <div><strong>Marketing</strong><span>657 students</span></div>
+                                    <b>19%</b>
+                                </div>
+                                <div class="ec-adm-overview-progress"><span class="ec-adm-overview-progress-orange"
+                                        style="--ec-adm-progress:19%"></span></div>
+                            </div>
+                        </div>
+
+                        <a href="404.html" class="ec-adm-overview-panel-link">Explore courses <i
+                                class="bi bi-arrow-up-right"></i></a>
+                    </article>
+                    <!--- End Course Categories --->
+
+                </section>
+                <!--- End Analytics Grid --->
+
+                <!--- Tables Grid --->
+                <section class="ec-adm-overview-tables">
+
+                    <!--- Recent Enrollments --->
+                    <article class="ec-adm-overview-panel ec-adm-overview-table-panel">
+                        <div class="ec-adm-overview-panel-heading">
+                            <div>
+                                <span class="ec-adm-overview-section-kicker">YOUR COMMUNITY</span>
+                                <h3>Recent enrollments</h3>
+                                <p>Students who recently joined a course.</p>
+                            </div>
+                            <a href="404.html" class="ec-adm-overview-text-link">View all <i
+                                    class="bi bi-arrow-up-right"></i></a>
+                        </div>
+
+                        <div class="ec-adm-overview-table-scroll">
+                            <table class="ec-adm-overview-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Course</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="ec-adm-overview-student"><span
+                                                    class="ec-adm-overview-student-avatar ec-adm-overview-student-purple">AS</span><span><strong>Arun
+                                                        S.</strong><small>arun@example.com</small></span></div>
+                                        </td>
+                                        <td>Web Development</td>
+                                        <td>Oct 08, 2026</td>
+                                        <td><span
+                                                class="ec-adm-overview-status ec-adm-overview-status-active">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="ec-adm-overview-student"><span
+                                                    class="ec-adm-overview-student-avatar ec-adm-overview-student-pink">PK</span><span><strong>Priya
+                                                        K.</strong><small>priya@example.com</small></span></div>
+                                        </td>
+                                        <td>UI / UX Design</td>
+                                        <td>Oct 07, 2026</td>
+                                        <td><span
+                                                class="ec-adm-overview-status ec-adm-overview-status-active">Active</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="ec-adm-overview-student"><span
+                                                    class="ec-adm-overview-student-avatar ec-adm-overview-student-green">RV</span><span><strong>Rahul
+                                                        V.</strong><small>rahul@example.com</small></span></div>
+                                        </td>
+                                        <td>Data Science</td>
+                                        <td>Oct 06, 2026</td>
+                                        <td><span
+                                                class="ec-adm-overview-status ec-adm-overview-status-pending">Pending</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="ec-adm-overview-student"><span
+                                                    class="ec-adm-overview-student-avatar ec-adm-overview-student-orange">MS</span><span><strong>Meena
+                                                        S.</strong><small>meena@example.com</small></span></div>
+                                        </td>
+                                        <td>Digital Marketing</td>
+                                        <td>Oct 05, 2026</td>
+                                        <td><span
+                                                class="ec-adm-overview-status ec-adm-overview-status-active">Active</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </article>
+                    <!--- End Recent Enrollments --->
+
+                    <!--- Top Courses --->
+                    <article class="ec-adm-overview-panel ec-adm-overview-top-courses">
+                        <div class="ec-adm-overview-panel-heading">
+                            <div>
+                                <span class="ec-adm-overview-section-kicker">STUDENT FAVORITES</span>
+                                <h3>Top courses</h3>
+                                <p>Your most popular learning experiences.</p>
+                            </div>
+                            <span class="ec-adm-overview-heading-icon"><i class="bi bi-trophy"></i></span>
+                        </div>
+
+                        <div class="ec-adm-overview-top-course">
+                            <img src="assets/images/web-development.webp" alt="Web development course"
+                                loading="lazy">
+                            <div class="ec-adm-overview-top-course-info"><strong>Full-Stack Web
+                                    Development</strong><span><i class="bi bi-people"></i> 842 students</span></div>
+                            <span class="ec-adm-overview-course-rank">01</span>
+                        </div>
+                        <div class="ec-adm-overview-top-course">
+                            <img src="assets/images/ui-ux-design.webp" alt="UI and UX design course"
+                                loading="lazy">
+                            <div class="ec-adm-overview-top-course-info"><strong>UI / UX Design
+                                    Essentials</strong><span><i class="bi bi-people"></i> 624 students</span></div>
+                            <span class="ec-adm-overview-course-rank">02</span>
+                        </div>
+                        <div class="ec-adm-overview-top-course">
+                            <img src="assets/images/about-hero.webp" alt="Data science course" loading="lazy">
+                            <div class="ec-adm-overview-top-course-info"><strong>Data Science
+                                    Fundamentals</strong><span><i class="bi bi-people"></i> 486 students</span></div>
+                            <span class="ec-adm-overview-course-rank">03</span>
+                        </div>
+
+                        <a href="404.html" class="ec-adm-overview-panel-link">Manage all courses <i
+                                class="bi bi-arrow-up-right"></i></a>
+                    </article>
+                    <!--- End Top Courses --->
+
+                </section>
+                <!--- End Tables Grid --->
+
+                <!--- Quick Actions --->
+                <section class="ec-adm-overview-quick-actions">
+                    <div class="ec-adm-overview-quick-copy">
+                        <span class="ec-adm-overview-section-kicker">KEEP THINGS MOVING</span>
+                        <h3>What would you like to do?</h3>
+                        <p>Jump straight into your everyday admin tasks.</p>
+                    </div>
+                    <a href="admin-courses.html" class="ec-adm-overview-quick-link">
+                        <span class="ec-adm-overview-quick-icon"><i class="bi bi-plus-circle"></i></span>
+                        <span><strong>Manage courses</strong><small>Add or update course content</small></span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <a href="admin-progress.html" class="ec-adm-overview-quick-link">
+                        <span class="ec-adm-overview-quick-icon ec-adm-overview-quick-icon-pink"><i
+                                class="bi bi-people"></i></span>
+                        <span><strong>Review students</strong><small>Explore enrollment activity</small></span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                    <a href="admin-profile.html" class="ec-adm-overview-quick-link">
+                        <span class="ec-adm-overview-quick-icon ec-adm-overview-quick-icon-green"><i
+                                class="bi bi-person-gear"></i></span>
+                        <span><strong>Admin profile</strong><small>Review your account details</small></span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </section>
+                <!--- End Quick Actions --->
+
+            </main>
+            <!--- End Admin Overview --->
+
+            <!--- End Dashboard Content --->
+
+        </div>
+        <!--- End Main Area --->
+
+    </div>
+    <!--- End Dashboard Layout --->
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/admin-overview.js"></script>
+</body>
+
+</html>

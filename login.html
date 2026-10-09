@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Login | E-Learning & Online Course Platform</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-lgn-body">
+
+    <!--- Login Page --->
+    <main class="ec-lgn-page">
+
+        <!--- Login Visual --->
+        <section class="ec-lgn-visual">
+
+            <a href="index.html" class="ec-lgn-brand" aria-label="Stackly home">
+                <span class="ec-lgn-brand-icon">
+                    <img src="assets/images/brand-logo.webp" alt="Stackly">
+                </span>
+                <span class="ec-lgn-brand-text">St<span>ackly</span></span>
+            </a>
+
+            <div class="ec-lgn-visual-content">
+                <span class="ec-lgn-visual-eyebrow">
+                    <span></span>
+                    YOUR NEXT CHAPTER STARTS HERE
+                </span>
+
+                <h1 class="ec-lgn-visual-title">
+                    Every skill
+                    <span>opens a door.</span>
+                </h1>
+
+                <p class="ec-lgn-visual-description">
+                    Sign in to continue your journey, discover new
+                    possibilities, and make meaningful progress with Stackly.
+                </p>
+
+                <div class="ec-lgn-visual-art">
+                    <div class="ec-lgn-art-orbit ec-lgn-art-orbit-one"></div>
+                    <div class="ec-lgn-art-orbit ec-lgn-art-orbit-two"></div>
+
+                    <div class="ec-lgn-art-card ec-lgn-art-card-one">
+                        <span class="ec-lgn-art-icon">
+                            <i class="bi bi-lightbulb"></i>
+                        </span>
+                        <div>
+                            <small>Keep exploring</small>
+                            <strong>Discover your potential</strong>
+                        </div>
+                    </div>
+
+                    <div class="ec-lgn-art-center">
+                        <img src="assets/images/brand-logo.webp" alt="">
+                        <span>Learn.</span>
+                        <span>Create.</span>
+                        <span>Grow.</span>
+                    </div>
+
+                    <div class="ec-lgn-art-card ec-lgn-art-card-two">
+                        <span class="ec-lgn-art-icon">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </span>
+                        <div>
+                            <small>Your journey</small>
+                            <strong>Starts with one step</strong>
+                        </div>
+                    </div>
+
+                    <span class="ec-lgn-art-dot ec-lgn-art-dot-one"></span>
+                    <span class="ec-lgn-art-dot ec-lgn-art-dot-two"></span>
+                </div>
+            </div>
+
+            <div class="ec-lgn-visual-footer">
+                <span>Learn. Create. Grow.</span>
+                <span>© <span id="ec-lgn-year"></span> Stackly</span>
+            </div>
+
+        </section>
+        <!--- End Login Visual --->
+
+
+        <!--- Login Form Area --->
+        <section class="ec-lgn-panel">
+
+            <a href="index.html" class="ec-lgn-home">
+                <i class="bi bi-arrow-left"></i>
+                <span>Back to home</span>
+            </a>
+
+            <div class="ec-lgn-form-wrap">
+
+                <div class="ec-lgn-heading">
+                    <span class="ec-lgn-eyebrow">WELCOME BACK</span>
+
+                    <h2 class="ec-lgn-title">
+                        Sign in to
+                        <span>Stackly.</span>
+                    </h2>
+
+                    <p class="ec-lgn-description">
+                        Enter your details to access your account.
+                    </p>
+                </div>
+
+
+                <!--- Role Selection --->
+                <fieldset class="ec-lgn-role-fieldset">
+                    <legend class="ec-lgn-role-legend">
+                        Sign in as
+                    </legend>
+
+                    <div class="ec-lgn-role-options">
+
+                        <label class="ec-lgn-role-option active">
+                            <input type="radio" name="login-role" value="client" checked required>
+
+                            <span class="ec-lgn-role-icon">
+                                <i class="bi bi-person"></i>
+                            </span>
+
+                            <span class="ec-lgn-role-copy">
+                                <strong>Client</strong>
+                                <small>My learning</small>
+                            </span>
+
+                            <span class="ec-lgn-role-check">
+                                <i class="bi bi-check2"></i>
+                            </span>
+                        </label>
+
+                        <label class="ec-lgn-role-option">
+                            <input type="radio" name="login-role" value="admin" required>
+
+                            <span class="ec-lgn-role-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </span>
+
+                            <span class="ec-lgn-role-copy">
+                                <strong>Admin</strong>
+                                <small>Manage platform</small>
+                            </span>
+
+                            <span class="ec-lgn-role-check">
+                                <i class="bi bi-check2"></i>
+                            </span>
+                        </label>
+
+                    </div>
+                </fieldset>
+                <!--- End Role Selection --->
+
+
+                <!--- Login Form --->
+                <form id="ec-lgn-form" class="ec-lgn-form">
+
+                    <!--- Email --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-lgn-email">
+                            Email address <span>*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-envelope ec-lgn-input-icon"></i>
+
+                            <input type="email" id="ec-lgn-email" name="email" placeholder="you@example.com"
+                                autocomplete="email" required>
+                        </div>
+                    </div>
+                    <!--- End Email --->
+
+
+                    <!--- Password --->
+                    <div class="ec-lgn-field">
+                        <label for="ec-lgn-password">
+                            Password <span>*</span>
+                        </label>
+
+                        <div class="ec-lgn-input-wrap">
+                            <i class="bi bi-lock ec-lgn-input-icon"></i>
+
+                            <input type="password" id="ec-lgn-password" name="password"
+                                placeholder="Enter your password" autocomplete="current-password" required>
+
+                            <button type="button" class="ec-lgn-password-toggle" id="ec-lgn-password-toggle"
+                                aria-label="Show password" aria-pressed="false">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--- End Password --->
+
+
+                    <!--- Remember Me / Forgot Password --->
+                    <div class="ec-lgn-options-row">
+
+                        <label class="ec-lgn-remember">
+                            <input type="checkbox" id="ec-lgn-remember" name="remember">
+                            <span class="ec-lgn-custom-checkbox">
+                                <i class="bi bi-check2"></i>
+                            </span>
+                            <span>Remember me</span>
+                        </label>
+
+                        <a href="404.html" class="ec-lgn-forgot">
+                            Forgot password?
+                        </a>
+
+                    </div>
+                    <!--- End Remember Me / Forgot Password --->
+
+
+                    <!--- Submit --->
+                    <button type="submit" class="ec-lgn-submit">
+                        <span>Login to account</span>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </button>
+                    <!--- End Submit --->
+
+                </form>
+                <!--- End Login Form --->
+
+
+                <!--- Sign Up --->
+                <div class="ec-lgn-signup">
+                    <span>Don't have an account?</span>
+                    <a href="register.html">
+                        Sign up
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+                <!--- End Sign Up --->
+
+
+                <div class="ec-lgn-security-note">
+                    <i class="bi bi-shield-check"></i>
+                    <span>Your learning journey starts here.</span>
+                </div>
+
+            </div>
+
+        </section>
+        <!--- End Login Form Area --->
+
+    </main>
+    <!--- End Login Page --->
+
+    <script src="assets/js/auth.js"></script>
+</body>
+
+</html>

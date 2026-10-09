@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Dashboard | E-Learning & Online Course Platform</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-dash-body" data-dashboard-role="client">
+
+    <!--- Dashboard Layout --->
+    <div class="ec-dash-layout">
+
+        <!--- Sidebar Overlay --->
+        <button type="button" class="ec-dash-overlay" id="ec-dash-overlay" aria-label="Close navigation menu"
+            tabindex="-1"></button>
+        <!--- End Sidebar Overlay --->
+
+
+        <!--- Sidebar --->
+        <aside class="ec-dash-sidebar" id="ec-dash-sidebar">
+
+            <!--- Sidebar Brand --->
+            <div class="ec-dash-sidebar-brand">
+                <a href="index.html" class="ec-dash-brand">
+                    <span class="ec-dash-brand-icon">
+                        <img src="assets/images/brand-logo.webp" alt="Stackly">
+                    </span>
+                    <span class="ec-dash-brand-text">St<span>ackly</span></span>
+                </a>
+
+                <button type="button" class="ec-dash-sidebar-close" id="ec-dash-sidebar-close"
+                    aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <!--- End Sidebar Brand --->
+
+
+            <!--- Mobile Account Details --->
+            <div class="ec-dash-mobile-user">
+                <div class="ec-dash-mobile-avatar">
+                    <img src="assets/images/profile-2.webp" alt="" class="ec-dash-avatar-image">
+                    <span class="ec-dash-avatar-initials">U</span>
+                </div>
+
+                <div class="ec-dash-mobile-user-info">
+                    <strong id="ec-dash-mobile-name">Welcome back</strong>
+                    <span id="ec-dash-mobile-email">user@example.com</span>
+                </div>
+            </div>
+            <!--- End Mobile Account Details --->
+
+
+            <!--- Navigation --->
+            <div class="ec-dash-nav-heading">WORKSPACE</div>
+
+            <nav class="ec-dash-nav" aria-label="Dashboard navigation">
+
+                <a href="client-dashboard.html" class="ec-dash-nav-link" data-dash-link="overview">
+                    <i class="bi bi-grid-1x2"></i>
+                    <span>Overview</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-courses.html" class="ec-dash-nav-link active" data-dash-link="courses">
+                    <i class="bi bi-collection-play"></i>
+                    <span>Courses</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-learning.html" class="ec-dash-nav-link" data-dash-link="learning">
+                    <i class="bi bi-journal-check"></i>
+                    <span id="ec-dash-third-link">My Learning</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="client-profile.html" class="ec-dash-nav-link" data-dash-link="profile">
+                    <i class="bi bi-person"></i>
+                    <span id="ec-dash-fourth-link">Profile</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <div class="ec-dash-nav-divider"></div>
+
+                <a href="login.html" class="ec-dash-nav-link ec-dash-logout" id="ec-dash-logout">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+            </nav>
+            <!--- End Navigation --->
+
+
+            <!--- Sidebar Footer --->
+            <div class="ec-dash-sidebar-footer">
+                <span class="ec-dash-sidebar-footer-icon">
+                    <i class="bi bi-stars"></i>
+                </span>
+                <div>
+                    <strong>Keep growing.</strong>
+                    <span>Learn. Create. Grow.</span>
+                </div>
+            </div>
+            <!--- End Sidebar Footer --->
+
+        </aside>
+        <!--- End Sidebar --->
+
+
+        <!--- Main Area --->
+        <div class="ec-dash-main">
+
+            <!--- Topbar --->
+            <header class="ec-dash-topbar">
+
+                <div class="ec-dash-topbar-left">
+
+                    <!--- Three Dot Menu: Tablet and Mobile --->
+                    <button type="button" class="ec-dash-menu-toggle" id="ec-dash-menu-toggle"
+                        aria-label="Open navigation menu" aria-controls="ec-dash-sidebar" aria-expanded="false">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                    <!--- End Three Dot Menu --->
+
+                    <div class="ec-dash-topbar-heading">
+                        <span class="ec-dash-topbar-eyebrow">STACKLY WORKSPACE</span>
+                        <h1 id="ec-dash-page-title">Client Courses</h1>
+                    </div>
+
+                </div>
+
+
+                <!--- Desktop and Tablet User Details --->
+                <div class="ec-dash-topbar-right">
+
+                    <div class="ec-dash-topbar-user">
+                        <span class="ec-dash-topbar-user-label">SIGNED IN AS</span>
+                        <strong id="ec-dash-topbar-email">user@example.com</strong>
+                    </div>
+
+                    <button type="button" class="ec-dash-profile-button" id="ec-dash-profile-button"
+                        aria-label="View profile" title="View profile">
+                        <img src="assets/images/profile-2.webp" alt="Profile" class="ec-dash-avatar-image">
+                        <span class="ec-dash-avatar-initials">U</span>
+                        <span class="ec-dash-profile-status"></span>
+                    </button>
+
+                </div>
+                <!--- End User Details --->
+
+            </header>
+            <!--- End Topbar --->
+
+
+            <!--- Dashboard Content --->
+            <!--- Client Courses Content --->
+            <main class="ec-dash-content ec-cls-content" id="ec-dash-overview">
+
+                <!--- Courses Welcome --->
+                <section class="ec-cls-hero">
+                    <div class="ec-cls-hero-copy">
+                        <span class="ec-cls-eyebrow"><i class="bi bi-compass"></i> YOUR NEXT CHAPTER</span>
+                        <h2>Find your next <span>big idea.</span></h2>
+                        <p>Explore practical courses, discover new interests, and build skills that move you forward.
+                        </p>
+                        <a href="404.html" class="ec-cls-hero-btn">
+                            Explore the library <i class="bi bi-arrow-down-right"></i>
+                        </a>
+                    </div>
+                    <div class="ec-cls-hero-art" aria-hidden="true">
+                        <div class="ec-cls-hero-orbit ec-cls-hero-orbit-one"></div>
+                        <div class="ec-cls-hero-orbit ec-cls-hero-orbit-two"></div>
+                        <div class="ec-cls-hero-book"><i class="bi bi-journal-richtext"></i></div>
+                        <span class="ec-cls-hero-float ec-cls-hero-float-one"><i class="bi bi-lightbulb"></i></span>
+                        <span class="ec-cls-hero-float ec-cls-hero-float-two"><i class="bi bi-stars"></i></span>
+                        <span class="ec-cls-hero-spark ec-cls-hero-spark-one"></span>
+                        <span class="ec-cls-hero-spark ec-cls-hero-spark-two"></span>
+                    </div>
+                </section>
+                <!--- End Courses Welcome --->
+
+                <!--- Course Summary --->
+                <section class="ec-cls-summary" aria-label="Course library summary">
+                    <div class="ec-cls-summary-item">
+                        <span class="ec-cls-summary-icon ec-cls-summary-purple"><i
+                                class="bi bi-collection-play"></i></span>
+                        <div><strong id="ec-cls-total-count">6</strong><span>Available courses</span></div>
+                    </div>
+                    <div class="ec-cls-summary-item">
+                        <span class="ec-cls-summary-icon ec-cls-summary-green"><i class="bi bi-play-circle"></i></span>
+                        <div><strong id="ec-cls-enrolled-count">0</strong><span>In your library</span></div>
+                    </div>
+                    <div class="ec-cls-summary-item">
+                        <span class="ec-cls-summary-icon ec-cls-summary-orange"><i
+                                class="bi bi-bookmark-heart"></i></span>
+                        <div><strong id="ec-cls-saved-count">0</strong><span>Saved courses</span></div>
+                    </div>
+                </section>
+                <!--- End Course Summary --->
+
+                <!--- Course Library --->
+                <section class="ec-cls-library" id="ec-cls-library">
+                    <div class="ec-cls-section-heading">
+                        <div>
+                            <span class="ec-cls-section-kicker">LEARN SOMETHING NEW</span>
+                            <h2>Explore the course library</h2>
+                            <p>Choose a course that matches your interests and goals.</p>
+                        </div>
+                        <span class="ec-cls-library-label"><i class="bi bi-stars"></i> Learn at your pace</span>
+                    </div>
+
+                    <!--- Search and Filters --->
+                    <div class="ec-cls-filter-panel">
+                        <div class="ec-cls-search">
+                            <i class="bi bi-search"></i>
+                            <input type="search" id="ec-cls-search" placeholder="Search courses, skills, or topics..."
+                                aria-label="Search courses">
+                            <button type="button" id="ec-cls-clear-search" aria-label="Clear search" hidden><i
+                                    class="bi bi-x-lg"></i></button>
+                        </div>
+
+                        <div class="ec-cls-filter-row">
+                            <label class="ec-cls-filter-control">
+                                <span>Category</span>
+                                <select id="ec-cls-category">
+                                    <option value="all">All categories</option>
+                                    <option value="Development">Development</option>
+                                    <option value="Design">Design</option>
+                                    <option value="Data">Data & Analytics</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Business">Business</option>
+                                    <option value="Productivity">Productivity</option>
+                                </select>
+                            </label>
+
+                            <label class="ec-cls-filter-control">
+                                <span>Level</span>
+                                <select id="ec-cls-level">
+                                    <option value="all">All levels</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </label>
+
+                            <label class="ec-cls-filter-control">
+                                <span>Duration</span>
+                                <select id="ec-cls-duration">
+                                    <option value="all">Any duration</option>
+                                    <option value="short">Under 4 hours</option>
+                                    <option value="medium">4–8 hours</option>
+                                    <option value="long">Over 8 hours</option>
+                                </select>
+                            </label>
+
+                            <label class="ec-cls-filter-control">
+                                <span>Sort by</span>
+                                <select id="ec-cls-sort">
+                                    <option value="featured">Featured</option>
+                                    <option value="title-asc">Name: A–Z</option>
+                                    <option value="duration-asc">Shortest first</option>
+                                    <option value="duration-desc">Longest first</option>
+                                </select>
+                            </label>
+
+                            <button type="button" class="ec-cls-reset-filters" id="ec-cls-reset">
+                                <i class="bi bi-arrow-counterclockwise"></i> Reset
+                            </button>
+                        </div>
+
+                        <div class="ec-cls-filter-bottom">
+                            <span id="ec-cls-results-count" aria-live="polite">Showing 6 courses</span>
+                            <button type="button" class="ec-cls-saved-filter" id="ec-cls-show-saved"
+                                aria-pressed="false">
+                                <i class="bi bi-bookmark-heart"></i> Saved only
+                            </button>
+                        </div>
+                    </div>
+                    <!--- End Search and Filters --->
+
+                    <!--- Category Shortcuts --->
+                    <div class="ec-cls-categories">
+                        <button type="button" class="ec-cls-category-chip active" data-cls-category="all"
+                            aria-pressed="true">
+                            <i class="bi bi-grid"></i> All courses
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Development"
+                            aria-pressed="false">
+                            <i class="bi bi-code-slash"></i> Development
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Design"
+                            aria-pressed="false">
+                            <i class="bi bi-palette2"></i> Design
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Data"
+                            aria-pressed="false">
+                            <i class="bi bi-bar-chart-line"></i> Data
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Marketing"
+                            aria-pressed="false">
+                            <i class="bi bi-megaphone"></i> Marketing
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Business"
+                            aria-pressed="false">
+                            <i class="bi bi-briefcase"></i> Business
+                        </button>
+                        <button type="button" class="ec-cls-category-chip" data-cls-category="Productivity"
+                            aria-pressed="false">
+                            <i class="bi bi-lightning"></i> Productivity
+                        </button>
+                    </div>
+                    <!--- End Category Shortcuts --->
+
+                    <!--- Course Cards Render Here --->
+                    <div class="ec-cls-grid" id="ec-cls-grid"></div>
+
+                    <!--- Empty Results --->
+                    <div class="ec-cls-empty" id="ec-cls-empty" hidden>
+                        <span><i class="bi bi-search"></i></span>
+                        <h3>No courses found</h3>
+                        <p>Try another search term or change your filters to discover more courses.</p>
+                        <button type="button" class="ec-cls-empty-btn" id="ec-cls-empty-reset">Clear filters</button>
+                    </div>
+                    <!--- End Empty Results --->
+                </section>
+                <!--- End Course Library --->
+
+                <!--- Learning Paths --->
+                <section class="ec-cls-paths">
+                    <div class="ec-cls-paths-copy">
+                        <span class="ec-cls-section-kicker">MAKE A PLAN</span>
+                        <h2>Learn with a direction.</h2>
+                        <p>Build your skills step by step. Choose a learning path and use it as a guide for what to
+                            learn next.</p>
+                        <a href="404.html" class="ec-cls-paths-btn">View my learning <i
+                                class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                    <div class="ec-cls-path-steps">
+                        <div class="ec-cls-path-step"><span>01</span><i
+                                class="bi bi-compass"></i><strong>Discover</strong><small>Choose a goal</small></div>
+                        <span class="ec-cls-path-connector"></span>
+                        <div class="ec-cls-path-step"><span>02</span><i
+                                class="bi bi-journal-bookmark"></i><strong>Learn</strong><small>Build knowledge</small>
+                        </div>
+                        <span class="ec-cls-path-connector"></span>
+                        <div class="ec-cls-path-step"><span>03</span><i
+                                class="bi bi-rocket-takeoff"></i><strong>Apply</strong><small>Practice skills</small>
+                        </div>
+                    </div>
+                    <span class="ec-cls-paths-decoration" aria-hidden="true"><i class="bi bi-stars"></i></span>
+                </section>
+                <!--- End Learning Paths --->
+
+                <!--- Enrollment Toast --->
+                <div class="ec-cls-toast" id="ec-cls-toast" role="status" aria-live="polite">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <span id="ec-cls-toast-message">Course saved.</span>
+                </div>
+                <!--- End Enrollment Toast --->
+
+            </main>
+            <!--- End Client Courses Content --->
+            <!--- End Dashboard Content --->
+
+        </div>
+        <!--- End Main Area --->
+
+    </div>
+    <!--- End Dashboard Layout --->
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/client-courses.js"></script>
+</body>
+
+</html>

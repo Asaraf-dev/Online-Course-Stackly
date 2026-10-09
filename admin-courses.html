@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#17172b">
+    <title>Dashboard | E-Learning & Online Course Platform</title>
+
+    <!--- Stylesheets --->
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+
+    <!--- Bootstrap Icons --->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="ec-dash-body" data-dashboard-role="admin">
+
+    <!--- Dashboard Layout --->
+    <div class="ec-dash-layout">
+
+        <!--- Sidebar Overlay --->
+        <button type="button" class="ec-dash-overlay" id="ec-dash-overlay" aria-label="Close navigation menu"
+            tabindex="-1"></button>
+        <!--- End Sidebar Overlay --->
+
+
+        <!--- Sidebar --->
+        <aside class="ec-dash-sidebar" id="ec-dash-sidebar">
+
+            <!--- Sidebar Brand --->
+            <div class="ec-dash-sidebar-brand">
+                <a href="index.html" class="ec-dash-brand">
+                    <span class="ec-dash-brand-icon">
+                        <img src="assets/images/brand-logo.webp" alt="Stackly">
+                    </span>
+                    <span class="ec-dash-brand-text">St<span>ackly</span></span>
+                </a>
+
+                <button type="button" class="ec-dash-sidebar-close" id="ec-dash-sidebar-close"
+                    aria-label="Close sidebar">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <!--- End Sidebar Brand --->
+
+
+            <!--- Mobile Account Details --->
+            <div class="ec-dash-mobile-user">
+                <div class="ec-dash-mobile-avatar">
+                    <img src="assets/images/profile-1.webp" alt="" class="ec-dash-avatar-image">
+                    <span class="ec-dash-avatar-initials">U</span>
+                </div>
+
+                <div class="ec-dash-mobile-user-info">
+                    <strong id="ec-dash-mobile-name">Welcome back</strong>
+                    <span id="ec-dash-mobile-email">user@example.com</span>
+                </div>
+            </div>
+            <!--- End Mobile Account Details --->
+
+
+            <!--- Navigation --->
+            <div class="ec-dash-nav-heading">WORKSPACE</div>
+
+            <nav class="ec-dash-nav" aria-label="Dashboard navigation">
+
+                <a href="admin-dashboard.html" class="ec-dash-nav-link" data-dash-link="overview">
+                    <i class="bi bi-grid-1x2"></i>
+                    <span>Overview</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-courses.html" class="ec-dash-nav-link active" data-dash-link="courses">
+                    <i class="bi bi-collection-play"></i>
+                    <span>Courses</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-progress.html" class="ec-dash-nav-link" data-dash-link="My Progress">
+                    <i class="bi bi-journal-check"></i>
+                    <span id="ec-dash-third-link">My Progress</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <a href="admin-profile.html" class="ec-dash-nav-link" data-dash-link="profile">
+                    <i class="bi bi-person"></i>
+                    <span id="ec-dash-fourth-link">Profile</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+                <div class="ec-dash-nav-divider"></div>
+
+                <a href="login.html" class="ec-dash-nav-link ec-dash-logout" id="ec-dash-logout">
+                    <i class="bi bi-box-arrow-left"></i>
+                    <span>Logout</span>
+                    <i class="bi bi-chevron-right ec-dash-nav-arrow"></i>
+                </a>
+
+            </nav>
+            <!--- End Navigation --->
+
+
+            <!--- Sidebar Footer --->
+            <div class="ec-dash-sidebar-footer">
+                <span class="ec-dash-sidebar-footer-icon">
+                    <i class="bi bi-stars"></i>
+                </span>
+                <div>
+                    <strong>Keep growing.</strong>
+                    <span>Learn. Create. Grow.</span>
+                </div>
+            </div>
+            <!--- End Sidebar Footer --->
+
+        </aside>
+        <!--- End Sidebar --->
+
+
+        <!--- Main Area --->
+        <div class="ec-dash-main">
+
+            <!--- Topbar --->
+            <header class="ec-dash-topbar">
+
+                <div class="ec-dash-topbar-left">
+
+                    <!--- Three Dot Menu: Tablet and Mobile --->
+                    <button type="button" class="ec-dash-menu-toggle" id="ec-dash-menu-toggle"
+                        aria-label="Open navigation menu" aria-controls="ec-dash-sidebar" aria-expanded="false">
+                        <i class="bi bi-three-dots"></i>
+                    </button>
+                    <!--- End Three Dot Menu --->
+
+                    <div class="ec-dash-topbar-heading">
+                        <span class="ec-dash-topbar-eyebrow">STACKLY WORKSPACE</span>
+                        <h1 id="ec-dash-page-title">Admin Courses</h1>
+                    </div>
+
+                </div>
+
+
+                <!--- Desktop and Tablet User Details --->
+                <div class="ec-dash-topbar-right">
+
+                    <div class="ec-dash-topbar-user">
+                        <span class="ec-dash-topbar-user-label">SIGNED IN AS</span>
+                        <strong id="ec-dash-topbar-email">user@example.com</strong>
+                    </div>
+
+                    <button type="button" class="ec-dash-profile-button" id="ec-dash-profile-button"
+                        aria-label="View profile" title="View profile">
+                        <img src="assets/images/profile-1.webp" alt="Profile" class="ec-dash-avatar-image">
+                        <span class="ec-dash-avatar-initials">U</span>
+                        <span class="ec-dash-profile-status"></span>
+                    </button>
+
+                </div>
+                <!--- End User Details --->
+
+            </header>
+            <!--- End Topbar --->
+
+
+            <!--- Dashboard Content --->
+
+            <!--- Admin Courses --->
+            <main class="ec-dash-content" id="ec-dash-overview">
+
+                <!--- Courses Welcome --->
+                <section class="ec-adm-crs-welcome">
+                    <div class="ec-adm-crs-welcome-copy">
+                        <span class="ec-adm-crs-eyebrow"><i class="bi bi-collection-play"></i> COURSE MANAGEMENT</span>
+                        <h2>Build a library worth learning from.</h2>
+                        <p>Create courses, manage publishing, and keep your learning content organized in one place.</p>
+                    </div>
+                    <button type="button" class="ec-adm-crs-primary-btn" id="ec-adm-crs-add">
+                        <i class="bi bi-plus-lg"></i> Add new course
+                    </button>
+                    <span class="ec-adm-crs-decoration" aria-hidden="true"></span>
+                </section>
+                <!--- End Courses Welcome --->
+
+                <!--- Course Statistics --->
+                <section class="ec-adm-crs-stats" aria-label="Course statistics">
+                    <article class="ec-adm-crs-stat">
+                        <div class="ec-adm-crs-stat-top"><span>Total courses</span><i
+                                class="bi bi-collection-play ec-adm-crs-stat-purple"></i></div>
+                        <strong id="ec-adm-crs-stat-total">0</strong>
+                        <small>Across your course library</small>
+                    </article>
+                    <article class="ec-adm-crs-stat">
+                        <div class="ec-adm-crs-stat-top"><span>Published</span><i
+                                class="bi bi-check-circle ec-adm-crs-stat-green"></i></div>
+                        <strong id="ec-adm-crs-stat-published">0</strong>
+                        <small>Visible to learners</small>
+                    </article>
+                    <article class="ec-adm-crs-stat">
+                        <div class="ec-adm-crs-stat-top"><span>Drafts</span><i
+                                class="bi bi-file-earmark-text ec-adm-crs-stat-orange"></i></div>
+                        <strong id="ec-adm-crs-stat-drafts">0</strong>
+                        <small>Waiting to be published</small>
+                    </article>
+                    <article class="ec-adm-crs-stat">
+                        <div class="ec-adm-crs-stat-top"><span>Total enrollments</span><i
+                                class="bi bi-people ec-adm-crs-stat-pink"></i></div>
+                        <strong id="ec-adm-crs-stat-enrollments">0</strong>
+                        <small>Across all courses</small>
+                    </article>
+                </section>
+                <!--- End Course Statistics --->
+
+                <!--- Course Library --->
+                <section class="ec-adm-crs-library">
+                    <div class="ec-adm-crs-library-heading">
+                        <div>
+                            <span class="ec-adm-crs-section-kicker">YOUR CONTENT</span>
+                            <h2>Course library</h2>
+                            <p>Manage your courses, visibility, and learning content.</p>
+                        </div>
+                        <span class="ec-adm-crs-result-count" id="ec-adm-crs-result-count">0 courses</span>
+                    </div>
+
+                    <!--- Course Filters --->
+                    <div class="ec-adm-crs-toolbar">
+                        <label class="ec-adm-crs-search">
+                            <i class="bi bi-search"></i>
+                            <input type="search" id="ec-adm-crs-search" placeholder="Search courses or instructors..."
+                                aria-label="Search courses">
+                            <kbd>/</kbd>
+                        </label>
+                        <label class="ec-adm-crs-filter">
+                            <span class="ec-adm-crs-sr-only">Filter by category</span>
+                            <select id="ec-adm-crs-category">
+                                <option value="all">All categories</option>
+                                <option value="Development">Development</option>
+                                <option value="Design">Design</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Marketing">Marketing</option>
+                                <option value="Productivity">Productivity</option>
+                            </select>
+                        </label>
+                        <label class="ec-adm-crs-filter">
+                            <span class="ec-adm-crs-sr-only">Filter by status</span>
+                            <select id="ec-adm-crs-status">
+                                <option value="all">All statuses</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </label>
+                        <label class="ec-adm-crs-filter">
+                            <span class="ec-adm-crs-sr-only">Sort courses</span>
+                            <select id="ec-adm-crs-sort">
+                                <option value="newest">Newest first</option>
+                                <option value="oldest">Oldest first</option>
+                                <option value="title">Course title A–Z</option>
+                                <option value="enrollments">Most enrollments</option>
+                            </select>
+                        </label>
+                        <button type="button" class="ec-adm-crs-clear-btn" id="ec-adm-crs-clear">Reset</button>
+                    </div>
+                    <!--- End Course Filters --->
+
+                    <!--- Course Grid --->
+                    <div class="ec-adm-crs-grid" id="ec-adm-crs-grid" aria-live="polite"></div>
+
+                    <!--- Empty State --->
+                    <div class="ec-adm-crs-empty" id="ec-adm-crs-empty" hidden>
+                        <span><i class="bi bi-search"></i></span>
+                        <h3>No courses found</h3>
+                        <p>Try a different search or clear your filters to see all courses.</p>
+                        <button type="button" class="ec-adm-crs-secondary-btn" id="ec-adm-crs-empty-reset">Clear
+                            filters</button>
+                    </div>
+                    <!--- End Empty State --->
+                </section>
+                <!--- End Course Library --->
+
+                <!--- Course Editor Modal --->
+                <div class="ec-adm-crs-modal" id="ec-adm-crs-modal" aria-hidden="true">
+                    <div class="ec-adm-crs-modal-backdrop" data-crs-close></div>
+                    <section class="ec-adm-crs-modal-dialog" role="dialog" aria-modal="true"
+                        aria-labelledby="ec-adm-crs-modal-title">
+                        <div class="ec-adm-crs-modal-heading">
+                            <div>
+                                <span class="ec-adm-crs-section-kicker">COURSE EDITOR</span>
+                                <h2 id="ec-adm-crs-modal-title">Create a course</h2>
+                                <p>Add the essential details for your learning content.</p>
+                            </div>
+                            <button type="button" class="ec-adm-crs-modal-close" data-crs-close
+                                aria-label="Close course editor"><i class="bi bi-x-lg"></i></button>
+                        </div>
+
+                        <form id="ec-adm-crs-form">
+                            <input type="hidden" id="ec-adm-crs-id">
+
+                            <div class="ec-adm-crs-form-field">
+                                <label for="ec-adm-crs-title">Course title <span>*</span></label>
+                                <input type="text" id="ec-adm-crs-title" maxlength="100"
+                                    placeholder="e.g. Complete Web Development" required>
+                            </div>
+
+                            <div class="ec-adm-crs-form-row">
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-instructor">Instructor <span>*</span></label>
+                                    <input type="text" id="ec-adm-crs-instructor" maxlength="70"
+                                        placeholder="Instructor name" required>
+                                </div>
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-category-input">Category <span>*</span></label>
+                                    <select id="ec-adm-crs-category-input" required>
+                                        <option value="">Select category</option>
+                                        <option value="Development">Development</option>
+                                        <option value="Design">Design</option>
+                                        <option value="Data Science">Data Science</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Productivity">Productivity</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="ec-adm-crs-form-row">
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-level">Level <span>*</span></label>
+                                    <select id="ec-adm-crs-level" required>
+                                        <option value="">Select level</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                        <option value="All levels">All levels</option>
+                                    </select>
+                                </div>
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-duration">Duration <span>*</span></label>
+                                    <input type="text" id="ec-adm-crs-duration" maxlength="30" placeholder="e.g. 8h 30m"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="ec-adm-crs-form-row">
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-price">Price (₹) <span>*</span></label>
+                                    <input type="number" id="ec-adm-crs-price" min="0" max="10000000" step="1"
+                                        placeholder="999" required>
+                                </div>
+                                <div class="ec-adm-crs-form-field">
+                                    <label for="ec-adm-crs-image">Course image path</label>
+                                    <input type="text" id="ec-adm-crs-image" maxlength="250"
+                                        placeholder="assets/images/courses/web-development.webp">
+                                </div>
+                            </div>
+
+                            <div class="ec-adm-crs-form-field">
+                                <label for="ec-adm-crs-description">Description <span>*</span></label>
+                                <textarea id="ec-adm-crs-description" rows="3" maxlength="500"
+                                    placeholder="What will students learn in this course?" required></textarea>
+                            </div>
+
+                            <label class="ec-adm-crs-publish-option">
+                                <input type="checkbox" id="ec-adm-crs-publish">
+                                <span class="ec-adm-crs-publish-check"><i class="bi bi-check2"></i></span>
+                                <span><strong>Publish this course</strong><small>Published courses are marked as visible
+                                        to learners in this demo.</small></span>
+                            </label>
+
+                            <div class="ec-adm-crs-form-error" id="ec-adm-crs-form-error" role="alert" hidden></div>
+
+                            <div class="ec-adm-crs-modal-actions">
+                                <button type="button" class="ec-adm-crs-secondary-btn" data-crs-close>Cancel</button>
+                                <button type="submit" class="ec-adm-crs-primary-btn" id="ec-adm-crs-save"><i
+                                        class="bi bi-check2-circle"></i> Save course</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+                <!--- End Course Editor Modal --->
+
+                <!--- Delete Confirmation Modal --->
+                <div class="ec-adm-crs-modal ec-adm-crs-delete-modal" id="ec-adm-crs-delete-modal" aria-hidden="true">
+                    <div class="ec-adm-crs-modal-backdrop" data-delete-close></div>
+                    <section class="ec-adm-crs-confirm-dialog" role="alertdialog" aria-modal="true"
+                        aria-labelledby="ec-adm-crs-delete-title">
+                        <span class="ec-adm-crs-delete-icon"><i class="bi bi-trash3"></i></span>
+                        <h2 id="ec-adm-crs-delete-title">Delete this course?</h2>
+                        <p>This will remove the course from this browser's demo library. This action cannot be undone.
+                        </p>
+                        <div class="ec-adm-crs-modal-actions">
+                            <button type="button" class="ec-adm-crs-secondary-btn" data-delete-close>Cancel</button>
+                            <button type="button" class="ec-adm-crs-danger-btn" id="ec-adm-crs-confirm-delete">Delete
+                                course</button>
+                        </div>
+                    </section>
+                </div>
+                <!--- End Delete Confirmation Modal --->
+
+                <!--- Course Toast --->
+                <div class="ec-adm-crs-toast" id="ec-adm-crs-toast" role="status" aria-live="polite">
+                    <i class="bi bi-check-circle"></i><span id="ec-adm-crs-toast-message">Course saved</span>
+                </div>
+                <!--- End Course Toast --->
+
+            </main>
+            <!--- End Admin Courses --->
+
+            <!--- End Dashboard Content --->
+
+        </div>
+        <!--- End Main Area --->
+
+    </div>
+    <!--- End Dashboard Layout --->
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/admin-courses.js"></script>
+</body>
+
+</html>

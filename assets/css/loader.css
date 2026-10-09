@@ -1,0 +1,68 @@
+/*--- Loader ---*/
+.ec-loader {position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#111126;opacity:1;visibility:visible;transition:opacity .7s ease,visibility .7s ease;}
+.ec-loader.ec-loader-hidden {opacity:0;visibility:hidden;pointer-events:none;}
+.ec-loader.ec-loader-exit .ec-loader-content {opacity:0;transform:translateY(-20px) scale(.96);}
+.ec-loader.ec-loader-exit .ec-loader-mark {transform:scale(1.12);}
+.ec-loader-glow {position:absolute;top:var(--ec-loader-y,50%);left:var(--ec-loader-x,50%);width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(108,99,255,.2) 0%,rgba(108,99,255,.08) 35%,transparent 70%);transform:translate(-50%,-50%);pointer-events:none;transition:left .2s ease,top .2s ease;}
+.ec-loader-particles {position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.ec-loader-particle {position:absolute;display:block;border-radius:50%;background:rgba(255,255,255,.55);opacity:0;animation:ecLoaderParticleFloat 5s ease-in-out infinite;}
+.ec-loader-content {position:relative;z-index:2;display:flex;align-items:center;flex-direction:column;text-align:center;transition:opacity .55s ease,transform .55s ease;}
+.ec-loader-mark {position:relative;display:flex;align-items:center;justify-content:center;width:132px;height:132px;margin-bottom:27px;transition:transform .7s cubic-bezier(.22,1,.36,1);}
+.ec-loader-logo {position:relative;z-index:3;display:flex;align-items:center;justify-content:center;width:70px;height:70px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(255,255,255,.06);box-shadow:0 0 40px rgba(108,99,255,.22),inset 0 1px 0 rgba(255,255,255,.12);animation:ecLoaderLogoFloat 3s ease-in-out infinite;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+.ec-loader-logo img {width:52px;height:52px;object-fit:contain;}
+.ec-loader-orbit {position:absolute;display:block;border:1px solid rgba(255,255,255,.11);border-radius:50%;pointer-events:none;}
+.ec-loader-orbit-one {width:92px;height:92px;border-top-color:rgba(108,99,255,.8);border-right-color:rgba(108,99,255,.35);animation:ecLoaderOrbitOne 4s linear infinite;}
+.ec-loader-orbit-two {width:114px;height:114px;border-bottom-color:rgba(255,101,132,.65);border-left-color:rgba(255,101,132,.25);animation:ecLoaderOrbitTwo 5s linear infinite;}
+.ec-loader-orbit-three {width:132px;height:132px;border-top-color:rgba(0,201,167,.5);border-right-color:rgba(0,201,167,.15);animation:ecLoaderOrbitThree 7s linear infinite;}
+.ec-loader-orbit-one::after,.ec-loader-orbit-two::after,.ec-loader-orbit-three::after {content:"";position:absolute;width:5px;height:5px;border-radius:50%;box-shadow:0 0 12px currentColor;}
+.ec-loader-orbit-one::after {top:-3px;left:50%;color:var(--pd-primary);background:var(--pd-primary);}
+.ec-loader-orbit-two::after {right:-3px;top:50%;color:var(--pd-secondary);background:var(--pd-secondary);}
+.ec-loader-orbit-three::after {bottom:-3px;left:50%;color:var(--pd-accent);background:var(--pd-accent);}
+.ec-loader-brand {margin-bottom:15px;color:var(--pd-white);font-size:28px;font-weight:800;line-height:1;letter-spacing:-1px;}
+.ec-loader-brand span {color:var(--pd-primary);}
+.ec-loader-message-wrap {display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:48px;}
+.ec-loader-message {margin:0;color:rgba(255,255,255,.6);font-size:12px;font-weight:500;letter-spacing:.25px;transition:opacity .25s ease,transform .25s ease;}
+.ec-loader-dots {display:flex;align-items:center;gap:5px;margin-top:10px;}
+.ec-loader-dots span {display:block;width:4px;height:4px;border-radius:50%;background:var(--pd-primary);animation:ecLoaderDot 1.2s ease-in-out infinite;}
+.ec-loader-dots span:nth-child(2) {animation-delay:.15s;}
+.ec-loader-dots span:nth-child(3) {animation-delay:.3s;}
+.ec-loader-corner {position:absolute;width:65px;height:65px;border-color:rgba(255,255,255,.12);pointer-events:none;}
+.ec-loader-corner-top {top:30px;left:30px;border-top:1px solid;border-left:1px solid;}
+.ec-loader-corner-bottom {right:30px;bottom:30px;border-right:1px solid;border-bottom:1px solid;}
+.ec-loader-footer {position:absolute;bottom:30px;left:50%;z-index:2;display:flex;align-items:center;gap:9px;transform:translateX(-50%);color:rgba(255,255,255,.3);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+.ec-loader-footer i {display:block;width:3px;height:3px;border-radius:50%;background:var(--pd-primary);}
+@keyframes ecLoaderLogoFloat {0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+@keyframes ecLoaderOrbitOne {from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes ecLoaderOrbitTwo {from{transform:rotate(360deg);}to{transform:rotate(0deg);}}
+@keyframes ecLoaderOrbitThree {from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes ecLoaderDot {0%,80%,100%{opacity:.25;transform:translateY(0);}40%{opacity:1;transform:translateY(-4px);}}
+@keyframes ecLoaderParticleFloat {0%{opacity:0;transform:translate3d(0,20px,0) scale(.5);}20%{opacity:.7;}80%{opacity:.25;}100%{opacity:0;transform:translate3d(0,-80px,0) scale(1);}}
+@media (max-width:767px) {
+.ec-loader-glow {width:280px;height:280px;}
+.ec-loader-mark {width:115px;height:115px;margin-bottom:23px;}
+.ec-loader-logo {width:63px;height:63px;border-radius:19px;}
+.ec-loader-logo img {width:47px;height:47px;}
+.ec-loader-orbit-one {width:84px;height:84px;}
+.ec-loader-orbit-two {width:99px;height:99px;}
+.ec-loader-orbit-three {width:115px;height:115px;}
+.ec-loader-brand {font-size:25px;}
+.ec-loader-message {font-size:11px;}
+.ec-loader-corner {width:45px;height:45px;}
+.ec-loader-corner-top {top:20px;left:20px;}
+.ec-loader-corner-bottom {right:20px;bottom:20px;}
+.ec-loader-footer {bottom:20px;}
+}
+@media (max-width:575px) {
+.ec-loader-mark {width:105px;height:105px;}
+.ec-loader-logo {width:59px;height:59px;}
+.ec-loader-logo img {width:44px;height:44px;}
+.ec-loader-orbit-one {width:76px;height:76px;}
+.ec-loader-orbit-two {width:91px;height:91px;}
+.ec-loader-orbit-three {width:105px;height:105px;}
+.ec-loader-brand {font-size:23px;}
+.ec-loader-footer {font-size:8px;letter-spacing:1.2px;}
+}
+@media (prefers-reduced-motion:reduce) {
+.ec-loader-orbit-one,.ec-loader-orbit-two,.ec-loader-orbit-three,.ec-loader-logo,.ec-loader-particle,.ec-loader-dots span {animation:none;}
+.ec-loader {transition:none;}
+}
